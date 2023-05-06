@@ -1,0 +1,827 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Sona Template" />
+    <meta name="keywords" content="Sona, unica, creative, html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Booking</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Css Styles -->
+    <link
+      rel="stylesheet"
+      href="../../static/css/bootstrap.min.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../static/css/font-awesome.min.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../static/css/elegant-icons.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../static/css/flaticon.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../static/css/owl.carousel.min.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../static/css/nice-select.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../static/css/jquery-ui.min.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../static/css/magnific-popup.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../static/css/slicknav.min.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="../../static/css/style.css" type="text/css" />
+    <style>
+      .contentBox {
+        width: 60%; /*기준선*/
+        height: 1000px;
+        border: 0px;
+
+        margin: 0 auto;
+      }
+      .infoBox {
+        padding-top: 100px;
+        width: 100%;
+      }
+
+      .infoBox h4 {
+        font-family: "Courier New", "Courier", "monospace";
+      }
+      h4 {
+        font-family: "Courier New", "Courier", "monospace";
+        font-weight: bold;
+      }
+      h5 {
+        margin-top: 3px;
+        font-family: "Courier New", "Courier", "monospace";
+        color: darkgrey;
+        font-size: 16px;
+      }
+
+      .step1,
+      .step2,
+      .step3,
+      .step4 {
+        font-weight: 600;
+        color: darkgrey;
+        border-left: 1px solid;
+        padding-left: 10px;
+        float: left;
+      }
+      .step1,
+      .step2,
+      .step3 {
+        margin-right: 30px;
+      }
+
+      .step3 {
+        color: #dfa974;
+      }
+      .SearchRooms {
+        height: 40px;
+        width: 100px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        background-color: #dfa974;
+        text-align: center;
+        font-weight: bold;
+        color: white;
+      }
+      .SearchRooms:active {
+        background-color: #bf8d5b;
+      }
+      hr {
+        height: 2px;
+        background-color: lightgrey;
+        border: 0px;
+      }
+      .validThru {
+        text-align: center;
+        width: 60px;
+      }
+      .moveNumber {
+        text-align: center;
+
+        width: 40px;
+      }
+
+      input {
+        height: 50px;
+        width: 700px;
+        font-size: 14px;
+        margin-bottom: 5px;
+        border-width: 1px;
+        border-color: lightgray;
+        border-radius: 5px;
+        border-style: solid;
+        padding: 10px;
+      }
+      .pay {
+        height: 50px;
+        width: 700px;
+        font-size: 14px;
+        margin-bottom: 5px;
+        border-width: 1px;
+        border-radius: 5px;
+        border-style: solid;
+        padding: 14px;
+        border-color: #dfa974;
+        color: #bf8d5b;
+        font-weight: 600;
+        text-align: center;
+      }
+      .moveNumber {
+        width: 120px;
+      }
+
+      .title {
+        font-weight: 600;
+        color: #424242;
+      }
+      .ReservationComp,
+      .return {
+        height: 50px;
+        width: 700px;
+        font-size: 16px;
+        background-color: #dfa974;
+        margin-top: 30px;
+
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        font-weight: bold;
+        color: white;
+      }
+
+      .return:active {
+        background-color: #bf8d5b;
+      }
+      .ReservationComp:active {
+        background-color: #bf8d5b;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+      <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Section Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="canvas-open">
+      <i class="icon_menu"></i>
+    </div>
+    <div class="offcanvas-menu-wrapper">
+      <div class="canvas-close">
+        <i class="icon_close"></i>
+      </div>
+      <!-- <div class="search-icon search-switch">
+        <i class="icon_search"></i>
+      </div> -->
+      <div class="top-social">
+        <button
+          class="log"
+          type="button"
+          onclick="location.href='{% url 'accounts:login_view' %}'"
+          style="border: 0px; background-color: white; font-size: 15px"
+        >
+          Login
+        </button>
+        /
+        <button
+          class="myPage"
+          type="button"
+          onclick="location.href='{% url 'mypage:mypage_1' %}'"
+          style="border: 0px; background-color: white; font-size: 15px"
+        >
+          MyPage
+        </button>
+      </div>
+      <div class="header-configure-area">
+        <!-- <div class="language-option">
+          <img src="img/flag.jpg" alt="" />
+          <span>EN <i class="fa fa-angle-down"></i></span> -->
+        <!-- <div class="flag-dropdown">
+            <ul>
+              <li><a href="#">Zi</a></li>
+              <li><a href="#">Fr</a></li>
+            </ul>
+          </div> -->
+        <!-- </div> -->
+        <a href="{% url 'booking:booking' %}" class="bk-btn">Booking Now</a>
+      </div>
+      <nav class="mainmenu mobile-menu">
+        <ul>
+          <li><a href="{% url 'booking:index' %}">Home</a></li>
+          <li><a href="{% url 'booking:rooms' %}">Rooms</a></li>
+          <li><a href="{% url 'booking:about_us' %}">About Us</a></li>
+          <!-- <li>
+            <a href="./pages.html">Pages</a>
+            <ul class="dropdown">
+              <li><a href="./room-details.html">Room Details</a></li>
+              <li><a href="./blog-details.html">Blog Details</a></li>
+              <li><a href="#">Family Room</a></li>
+              <li><a href="#">Premium Room</a></li>
+            </ul>
+          </li>
+          <li><a href="./blog.html">News</a></li> -->
+          <li>
+            <a href="{% url 'inquiries:customer_voice' %}">Customer Voice</a>
+          </li>
+        </ul>
+      </nav>
+      <div id="mobile-menu-wrap"></div>
+      <div class="top-social">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-tripadvisor"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+      </div>
+      <ul class="top-widget">
+        <li><i class="fa fa-phone"></i> (12) 345 67890</li>
+        <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
+      </ul>
+    </div>
+    <!-- Offcanvas Menu Section End -->
+
+    <!-- Header Section Begin -->
+    <header class="header-section header-normal">
+      <div class="top-nav">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <ul class="tn-left">
+                <li><i class="fa fa-phone"></i> (12) 345 67890</li>
+                <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
+              </ul>
+            </div>
+            <div class="col-lg-6">
+              <div class="tn-right">
+                <div class="top-social">
+                  <!-- <a href="#"><i class="fa fa-facebook"></i></a>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-tripadvisor"></i></a>
+                  <a href="#"><i class="fa fa-instagram"></i></a> -->
+                  <button
+                    class="log"
+                    type="button"
+                    onclick="location.href='{% url 'accounts:login_view' %}'"
+                    style="
+                      border: 0px;
+                      background-color: white;
+                      font-size: 15px;
+                    "
+                  >
+                    Login
+                  </button>
+                  /
+                  <button
+                    class="myPage"
+                    type="button"
+                    onclick="location.href='{% url 'mypage:mypage_1' %}'"
+                    style="
+                      border: 0px;
+                      background-color: white;
+                      font-size: 15px;
+                    "
+                  >
+                    MyPage
+                  </button>
+                </div>
+                <a href="{% url 'booking:booking' %}" class="bk-btn"
+                  >Booking Now</a
+                >
+                <!-- <div class="language-option">
+                  <img src="img/flag.jpg" alt="" />
+                  <span>EN <i class="fa fa-angle-down"></i></span> -->
+                <!-- <div class="flag-dropdown">
+                    <ul>
+                      <li><a href="#">Zi</a></li>
+                      <li><a href="#">Fr</a></li>
+                    </ul>
+                  </div> -->
+                <!-- </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-2">
+              <div class="logo">
+                <a href="{% url 'booking:index' %}">
+                  <img src="../../static/img/logo.png" alt="" />
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-10">
+              <div class="nav-menu">
+                <nav class="mainmenu">
+                  <ul>
+                    <li><a href="{% url 'booking:index' %}">Home</a></li>
+                    <li><a href="{% url 'booking:rooms' %}">Rooms</a></li>
+                    <li><a href="{% url 'booking:about_us' %}">About Us</a></li>
+                    <!-- <li>
+                      <a href="./pages.html">Pages</a>
+                      <ul class="dropdown">
+                        <li><a href="./room-details.html">Room Details</a></li>
+                        <li><a href="./blog-details.html">Blog Details</a></li>
+                        <li><a href="#">Family Room</a></li>
+                        <li><a href="#">Premium Room</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="./blog.html">News</a></li> -->
+                    <li>
+                      <a href="{% url 'inquiries:customer_voice' %}"
+                        >Customer Voice</a
+                      >
+                    </li>
+                  </ul>
+                </nav>
+                <!-- <div class="nav-right search-switch">
+                  <i class="icon_search"></i>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Contact Section Begin -->
+    <div class="breadcrumb-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="breadcrumb-text">
+              <h2>Booking</h2>
+              <div class="bt-option">
+                <a href="{% url 'booking:index' %}">Home</a>
+                <span>Booking</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--content-->
+    <div class="contentBox">
+      <div class="listBox">
+        <div class="in">
+          <div class="step1">
+            Step1<br />
+            <h5>날짜,인원 선택</h5>
+          </div>
+          <!--p1-->
+          <div class="step2">
+            Step2<br />
+            <h5>객실 선택&nbsp;&nbsp;&nbsp;</h5>
+          </div>
+          <!--p2-->
+          <div class="step3">
+            Step3<br />
+            <h5 style="color: #dfa974">정보 입력&nbsp;&nbsp;&nbsp;</h5>
+          </div>
+          <!--p3-->
+          <div class="step4">
+            Step4<br />
+            <h5>예약 완료&nbsp;&nbsp;&nbsp;</h5>
+          </div>
+        </div>
+      </div>
+      <!--캘린더-->
+      <div class="infoBox">
+        <div class="reservationInfo">
+          <h4>예약 정보</h4>
+          <hr />
+          <table>
+            <tr>
+              <td>체크인</td>
+              <td>?</td>
+            </tr>
+            <tr>
+              <td>체크아웃</td>
+              <td>?</td>
+            </tr>
+            <tr>
+              <td>인원</td>
+              <td>?</td>
+            </tr>
+            <tr>
+              <td>객실</td>
+              <td>?</td>
+            </tr>
+          </table>
+          <button
+            class="return"
+            type="button"
+            onclick="location.href='{% url 'booking:booking' %}'"
+          >
+            일정 다시 선택
+          </button>
+        </div>
+        <div class="customerInfo" style="margin-top: 50px">
+          <form style="all: initial">
+            <h4>고객 정보 입력</h4>
+            <hr />
+
+            <!--액션동작 아직 없음-->
+            <div class="title">투숙객명*</div>
+            <input
+              type="text"
+              name="name"
+              class="text"
+              placeholder="투숙객명"
+              required
+            /><br />
+            <!-- <div class="cusEmail">이메일주소*</div>
+            <input
+              type="email"
+              name="email"
+              required
+              class="text"
+              placeholder="이메일주소"
+            /> -->
+            <div class="em">
+              <div class="title">이메일*</div>
+              <input
+                style="width: 337px"
+                type="text"
+                id="email_id"
+                class="form_w200"
+                value=""
+                title="이메일 아이디"
+                placeholder="이메일"
+                maxlength="18"
+                required
+              />
+              @
+              <input
+                type="text"
+                style="width: 336px"
+                id="email_domain"
+                class="form_w200"
+                value=""
+                title="이메일 도메인"
+                placeholder="이메일 도메인"
+                maxlength="18"
+                required
+              />
+            </div>
+
+            <div class="title">휴대폰번호</div>
+            <input
+              type="text"
+              name="cellPhone"
+              id="cellPhone"
+              placeholder="핸드폰번호 입력"
+              maxlength="13"
+              required
+            />
+            <script>
+              function autoHypenPhone(str) {
+                str = str.replace(/[^0-9]/g, "");
+                var tmp = "";
+                if (str.length < 4) {
+                  return str;
+                } else if (str.length < 7) {
+                  tmp += str.substr(0, 3);
+                  tmp += "-";
+                  tmp += str.substr(3);
+                  return tmp;
+                } else if (str.length < 11) {
+                  tmp += str.substr(0, 3);
+                  tmp += "-";
+                  tmp += str.substr(3, 3);
+                  tmp += "-";
+                  tmp += str.substr(6);
+                  return tmp;
+                } else {
+                  tmp += str.substr(0, 3);
+                  tmp += "-";
+                  tmp += str.substr(3, 4);
+                  tmp += "-";
+                  tmp += str.substr(7);
+                  return tmp;
+                }
+                return str;
+              }
+
+              var cellPhone = document.getElementById("cellPhone");
+              cellPhone.onkeyup = function (event) {
+                event = event || window.event;
+                var _val = this.value.trim();
+                this.value = autoHypenPhone(_val);
+              };
+            </script>
+
+            <div class="title">생년월일 8자리 (선택)</div>
+            <input
+              type="text"
+              name="birth"
+              class="text"
+              placeholder="YYYYMMDD"
+            />
+
+            <div class="paymentInfo" style="margin-top: 50px">
+              <h4>결제 정보</h4>
+              <hr />
+              <div class="title">결제방법</div>
+              <div class="pay">숙소에서 결제</div>
+              <div class="title" style="float: left">카드번호</div>
+              <div class="title" style="float: left; margin-left: 525px">
+                유효기간
+              </div>
+              <br />
+              <input
+                type="text"
+                class="moveNumber"
+                onKeyup="inputMoveNumber(this);"
+                maxlength="4"
+              />&nbsp;-&nbsp;
+
+              <input
+                type="text"
+                class="moveNumber"
+                onKeyup="inputMoveNumber(this);"
+                maxlength="4"
+              />&nbsp;-&nbsp;
+
+              <input
+                type="text"
+                class="moveNumber"
+                onKeyup="inputMoveNumber(this);"
+                maxlength="4"
+              />&nbsp;-&nbsp;
+
+              <input type="text" class="moveNumber" maxlength="4" />
+              <script type="text/javascript">
+                function inputMoveNumber(num) {
+                  if (isFinite(num.value) == false) {
+                    alert("카드번호는 숫자만 입력할 수 있습니다.");
+                    num.value = "";
+                    return false;
+                  }
+
+                  max = num.getAttribute("maxlength");
+
+                  if (num.value.length >= max) {
+                    num.nextElementSibling.focus();
+                  }
+                }
+              </script>
+
+              <input
+                type="text"
+                class="validThru"
+                onKeyup="inputValidThru(this);"
+                placeholder="MM/YY"
+                maxlength="5"
+                style="width: 110px; margin-left: 35px"
+              />
+              <script type="text/javascript">
+                function inputValidThru(period) {
+                  // replace 함수를 사용하여 슬래시( / )을 공백으로 치환한다.
+                  var replaceCard = period.value.replace(/\//g, "");
+
+                  // 텍스트박스의 입력값이 4~5글자 사이가 되는 경우에만 실행한다.
+                  if (replaceCard.length >= 4 && replaceCard.length < 5) {
+                    var inputMonth = replaceCard.substring(0, 2); // 선언한 변수 month에 월의 정보값을 담는다.
+                    var inputYear = replaceCard.substring(2, 4); // 선언한 변수 year에 년의 정보값을 담는다.
+
+                    // 현재 날짜 값을 구한다.
+
+                    var nowDate = new Date();
+
+                    var nowMonth = autoLeftPad(nowDate.getMonth() + 1, 2);
+
+                    var nowYear = autoLeftPad(
+                      nowDate.getFullYear().toString().substr(2, 2),
+                      2
+                    );
+
+                    // isFinite함수를 사용하여 문자가 선언되었는지 확인한다.
+                    if (isFinite(inputMonth + inputYear) == false) {
+                      alert("문자는 입력하실 수 없습니다.");
+                      period.value =
+                        autoLeftPad(Number(nowMonth) + 1, 2) + "/" + nowYear;
+                      return false;
+                    }
+
+                    // 입력한 월이 12월 보다 큰 경우
+                    if (inputMonth > 12) {
+                      alert("12월보다 큰 월수는 입력하실 수 없습니다. ");
+                      period.value = "12/" + inputYear;
+                      return false;
+                    }
+
+                    // 입력한 유효기간을 현재날짜와 비교하여 사용 가능 여부를 판단한다.
+                    if (inputYear + inputMonth <= nowYear + nowMonth) {
+                      alert("유효기간이 만료된 카드는 사용하실 수 없습니다.");
+                      period.value =
+                        inputMonth + "/" + autoLeftPad(Number(nowYear) + 1, 2);
+                      return false;
+                    }
+
+                    period.value = inputMonth + "/" + inputYear;
+                  }
+                }
+
+                // 1자리 문자열의 경우 앞자리에 숫자 0을 자동으로 채워 00형태로 출력하기위한 함수
+                function autoLeftPad(num, digit) {
+                  if (String(num).length < digit) {
+                    num =
+                      new Array(digit - String(num).length + 1).join("0") + num;
+                  }
+                  return num;
+                }
+              </script>
+            </div>
+            <button class="ReservationComp" type="button">예약 완료</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--content end-->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+      <div class="container">
+        <div class="footer-text">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="ft-about">
+                <div class="logo">
+                  <a href="#">
+                    <img src="../../static/img/footer-logo.png" alt="" />
+                  </a>
+                </div>
+                <p>
+                  We inspire and reach millions of travelers<br />
+                  across 90 local websites
+                </p>
+                <div class="fa-social">
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-tripadvisor"></i></a>
+                  <a href="#"><i class="fa fa-instagram"></i></a>
+                  <a href="#"><i class="fa fa-youtube-play"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 offset-lg-1">
+              <div class="ft-contact">
+                <h6>Contact Us</h6>
+                <ul>
+                  <li>(12) 345 67890</li>
+                  <li>info.colorlib@gmail.com</li>
+                  <li>856 Cordia Extension Apt. 356, Lake, United State</li>
+                </ul>
+              </div>
+            </div>
+            <!-- <div class="col-lg-3 offset-lg-1">
+              <div class="ft-newslatter">
+                <h6>New latest</h6>
+                <p>Get the latest updates and offers.</p>
+                <form action="#" class="fn-form">
+                  <input type="text" placeholder="Email" />
+                  <button type="submit"><i class="fa fa-send"></i></button>
+                </form>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="copyright-option">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7">
+              <ul>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Terms of use</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Environmental Policy</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-5">
+              <div class="co-text">
+                <p>
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                  Copyright &copy;
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  All rights reserved | This template is made with
+                  <i class="fa fa-heart" aria-hidden="true"></i> by
+                  <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search model Begin -->
+    <div class="search-model">
+      <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch"><i class="icon_close"></i></div>
+        <form class="search-model-form">
+          <input type="text" id="search-input" placeholder="Search here....." />
+        </form>
+      </div>
+    </div>
+    <!-- Search model end -->
+
+    <!-- Js Plugins -->
+    <script src="../../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+    <script src="../../static/js/jquery.magnific-popup.min.js"></script>
+    <script src="../../static/js/jquery.nice-select.min.js"></script>
+    <script src="../../static/js/jquery-ui.min.js"></script>
+    <script src="../../static/js/jquery.slicknav.js"></script>
+    <script src="../../static/js/owl.carousel.min.js"></script>
+    <script src="../../static/js/main.js"></script>
+
+    <script>
+      //tell
+      function autoHypenPhone(str) {
+        str = str.replace(/[^0-9]/g, "");
+        var tmp = "";
+        if (str.length < 4) {
+          return str;
+        } else if (str.length < 7) {
+          tmp += str.substr(0, 3);
+          tmp += "-";
+          tmp += str.substr(3);
+          return tmp;
+        } else if (str.length < 11) {
+          tmp += str.substr(0, 3);
+          tmp += "-";
+          tmp += str.substr(3, 3);
+          tmp += "-";
+          tmp += str.substr(6);
+          return tmp;
+        } else {
+          tmp += str.substr(0, 3);
+          tmp += "-";
+          tmp += str.substr(3, 4);
+          tmp += "-";
+          tmp += str.substr(7);
+          return tmp;
+        }
+        return str;
+      }
+
+      var cellPhone = document.getElementById("cellPhone");
+      cellPhone.onkeyup = function (event) {
+        event = event || window.event;
+        var _val = this.value.trim();
+        this.value = autoHypenPhone(_val);
+      };
+    </script>
+  </body>
+</html>
