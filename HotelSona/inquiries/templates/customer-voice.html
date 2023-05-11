@@ -296,7 +296,7 @@
             {% for question in questions %}
             <tr style="border-bottom: 1px solid gray;">
               
-              <td><a href="{% url 'inquiries:customer_detail'  question.pk  %}">{{ question.title }}</a></td>
+              <td><a href="{% url 'inquiries:question_detail'  question.pk  %}">{{ question.title }}</a></td>
               <td>{{ question.author }}</td>
               <td>{{ question.created_date|date:"Y-m-d" }}</td>
               

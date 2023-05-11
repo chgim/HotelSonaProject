@@ -25,7 +25,7 @@ def customer_question(request):
         return render(request, 'customer-question.html')
     
 
-def customer_detail(request, question_id):
+def question_detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     context = {'question': question}
-    return render(request, 'customer-detail.html', context)
+    return render(request, 'question-detail.html', context)
