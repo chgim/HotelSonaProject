@@ -2,15 +2,17 @@ from django.shortcuts import render, redirect, get_object_or_404
 from inquiries.models import Question
 from django.utils import timezone
 from datetime import datetime
-
+from django.core.paginator import Paginator
 
 
 
 def customer_voice(request):
-    questions = Question.objects.order_by('-created_date') # order the questions by created_date
+    question_list = Question.objects.order_by('-created_date') # order the questions by created_date
+    paginator = Paginator(question_list, 5) # 10 questions per page
+    page = request.GET.get('page') # get the current page number from the request's query parameter
+    questions = paginator.get_page(page) # get the questions for the current page
     context = {'questions': questions}
     return render(request, 'customer-voice.html', context)
-
 
 
 def customer_question(request):
@@ -27,5 +29,5 @@ def customer_question(request):
 
 def question_detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    context = {'question': question}
-    return render(request, 'question-detail.html', context)
+    answer = question.answer
+    return render(request, 'question-detail.html', {'question': question, 'answer': answer})

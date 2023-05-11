@@ -66,6 +66,70 @@
       type="text/css"
     />
     <link rel="stylesheet" href="../../static/css/style.css" type="text/css" />
+
+
+
+    <style>
+      .btn{
+        height: 40px;
+        width: 100px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        background-color: #dfa974;
+        text-align: center;
+        font-weight: bold;
+        color: white;
+      }
+      .btn:active{
+        background-color: #bf8d5b;
+        
+      }
+      .btn:hover{
+    color: white;
+      }
+      th {
+    color: white;
+    background-color: #dfa974;
+    font-size: 18px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  td {
+    border-bottom: 1px solid lightgray;
+    font-size: 17px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+      .pagination {
+          display: flex;
+          justify-content: center;
+          margin-top: 20px;
+      }
+  
+      .pagination a {
+          color: #333;
+          padding: 8px 16px;
+          border-radius: 3px;
+          border: 1px solid #ccc;
+          margin: 0 3px;
+          transition: background-color 0.3s ease;
+      }
+  
+      .pagination a:hover {
+          background-color: #ccc;
+      }
+  
+      .pagination .current-page {
+          font-weight: bold;
+          border-radius: 3px;
+          border: 1px solid #ccc;
+          color: #fff;
+          background-color: #dfa974;
+          padding: 8px 16px;
+          margin: 0 3px;
+      }
+  </style>
   </head>
 
   <body>
@@ -279,34 +343,56 @@
     <section class="contact-section spad" style="margin-top: -85px;">
       <div class="intro" style="text-align: center; margin-bottom: 30px;"><p>호텔 Sona는 언제나 고객님의 목소리에 귀기울이고 있습니다.<br/> 
         고객님들의 소중한 충고와 격려, 또는 제안을 말씀을 주시면 더 나은 서비스로 보답하겠습니다.</p></div>
-      <div class="qurstion-table" style="width:70%; margin-left: 15%;">
+      <div class="qurstion-table" style="width:60%; margin-left: 20%;">
         <!-- 글쓰기 버튼 -->
-        <button style="width:10%; margin-left: 90%;margin-bottom: 30px;" onclick="location.href='{% url 'inquiries:customer_question' %}'">글쓰기</button>
+        <button style="width:10%; margin-left: 90%;margin-bottom: 30px;" class="btn" onclick="location.href='{% url 'inquiries:customer_question' %}'">글쓰기</button>
         <table style="width:100%; text-align: center; ">
-          <thead style="border-top: 1px solid gray; ">
-            <tr style="border-bottom: 1px solid gray;">
+          <thead>
+            <tr >
               
               <th>제목</th>
               <th>작성자</th>
+              <th>답변 상태</th>
               <th>작성일</th>
             </tr>
           </thead>
           <tbody>
             <!-- 게시글들의 목록 -->
             {% for question in questions %}
-            <tr style="border-bottom: 1px solid gray;">
-              
-              <td><a href="{% url 'inquiries:question_detail'  question.pk  %}">{{ question.title }}</a></td>
-              <td>{{ question.author }}</td>
-              <td>{{ question.created_date|date:"Y-m-d" }}</td>
-              
+            <tr style="border-bottom: 1px solid gray; cursor: pointer;" onclick="location.href='{% url 'inquiries:question_detail'  question.pk  %}'">
+            <td style="width:60%">{{ question.title }}</td>
+            <td style="width:15%">{{ question.author }}</td>
+            {% if question.answer %}
+            <td style="width:10%">답변완료</td>
+            {% else %}
+            <td style="width:10%">답변대기</td>
+            {% endif %}
+            <td style="width:20%">{{ question.created_date|date:"Y-m-d" }}</td>
             </tr>
-            
+            {% endfor %}
           </tbody>
-          {% endfor %}
+          
         </table>
-        
-        
+        <!-- 이전 페이지, 현재 페이지, 다음 페이지 버튼 추가 -->
+<!-- 페이징 기능 -->
+<div class="pagination">
+  {% if questions.has_previous %}
+      <a href="?page=1">&laquo; 처음</a>
+      <a href="?page={{ questions.previous_page_number }}">이전</a>
+  {% endif %}
+  {% for i in questions.paginator.page_range %}
+    {% if questions.number == i %}
+        <span class="current-page">{{ i }}</span>
+    {% else %}
+        <a href="?page={{ i }}">{{ i }}</a>
+    {% endif %}
+{% endfor %}
+
+{% if questions.has_next %}
+    <a href="?page={{ questions.next_page_number }}">다음</a>
+    <a href="?page={{ questions.paginator.num_pages }}">마지막 &raquo;</a>
+{% endif %}
+</div>
       </div>
 
 
