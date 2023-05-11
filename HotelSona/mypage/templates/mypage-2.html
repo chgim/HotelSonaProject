@@ -213,7 +213,7 @@
         <button
           class="log"
           type="button"
-          onclick="location.href='./login.html'"
+          onclick="location.href='{% url 'accounts:login_view' %}'"
           style="border: 0px; background-color: white; font-size: 15px"
         >
           Login
@@ -222,7 +222,7 @@
         <button
           class="myPage"
           type="button"
-          onclick="location.href='./mypage-1.html'"
+          onclick="location.href='{% url 'mypage:mypage_1' %}'"
           style="border: 0px; background-color: white; font-size: 15px"
         >
           MyPage
@@ -296,7 +296,7 @@
                   <button
                     class="log"
                     type="button"
-                    onclick="location.href='./login.html'"
+                    onclick="location.href='{% url 'accounts:login_view' %}'"
                     style="
                       border: 0px;
                       background-color: white;
@@ -309,7 +309,7 @@
                   <button
                     class="myPage"
                     type="button"
-                    onclick="location.href='./mypage-1.html'"
+                    onclick="location.href='{% url 'mypage:mypage_1' %}'"
                     style="
                       border: 0px;
                       background-color: white;
