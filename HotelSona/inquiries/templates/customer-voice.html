@@ -67,10 +67,8 @@
     />
     <link rel="stylesheet" href="../../static/css/style.css" type="text/css" />
 
-
-
     <style>
-      .btn{
+      .btn {
         height: 40px;
         width: 100px;
         font-size: 16px;
@@ -81,55 +79,54 @@
         font-weight: bold;
         color: white;
       }
-      .btn:active{
+      .btn:active {
         background-color: #bf8d5b;
-        
       }
-      .btn:hover{
-    color: white;
+      .btn:hover {
+        color: white;
       }
       th {
-    color: white;
-    background-color: #dfa974;
-    font-size: 18px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-  }
-  td {
-    border-bottom: 1px solid lightgray;
-    font-size: 17px;
-    padding-top: 7px;
-    padding-bottom: 7px;
-  }
+        color: white;
+        background-color: #dfa974;
+        font-size: 18px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+      td {
+        border-bottom: 1px solid lightgray;
+        font-size: 17px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+      }
       .pagination {
-          display: flex;
-          justify-content: center;
-          margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
       }
-  
+
       .pagination a {
-          color: #333;
-          padding: 8px 16px;
-          border-radius: 3px;
-          border: 1px solid #ccc;
-          margin: 0 3px;
-          transition: background-color 0.3s ease;
+        color: #333;
+        padding: 8px 16px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        margin: 0 3px;
+        transition: background-color 0.3s ease;
       }
-  
+
       .pagination a:hover {
-          background-color: #ccc;
+        background-color: #ccc;
       }
-  
+
       .pagination .current-page {
-          font-weight: bold;
-          border-radius: 3px;
-          border: 1px solid #ccc;
-          color: #fff;
-          background-color: #dfa974;
-          padding: 8px 16px;
-          margin: 0 3px;
+        font-weight: bold;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        color: #fff;
+        background-color: #dfa974;
+        padding: 8px 16px;
+        margin: 0 3px;
       }
-  </style>
+    </style>
   </head>
 
   <body>
@@ -138,84 +135,6 @@
       <div class="loader"></div>
     </div>
 
-    <!-- Offcanvas Menu Section Begin -->
-    <div class="offcanvas-menu-overlay"></div>
-    <div class="canvas-open">
-      <i class="icon_menu"></i>
-    </div>
-    <div class="offcanvas-menu-wrapper">
-      <div class="canvas-close">
-        <i class="icon_close"></i>
-      </div>
-      <!-- <div class="search-icon search-switch">
-        <i class="icon_search"></i>
-      </div> -->
-      <div class="top-social">
-        <button
-          class="log"
-          type="button"
-          onclick="location.href='{% url 'accounts:login_view' %}'"
-          style="border: 0px; background-color: white; font-size: 15px"
-        >
-          Login
-        </button>
-        /
-        <button
-          class="myPage"
-          type="button"
-          onclick="location.href='{% url 'mypage:mypage_1' %}'"
-          style="border: 0px; background-color: white; font-size: 15px"
-        >
-          MyPage
-        </button>
-      </div>
-      <div class="header-configure-area">
-        <!-- <div class="language-option">
-          <img src="img/flag.jpg" alt="" />
-          <span>EN <i class="fa fa-angle-down"></i></span> -->
-        <!-- <div class="flag-dropdown">
-            <ul>
-              <li><a href="#">Zi</a></li>
-              <li><a href="#">Fr</a></li>
-            </ul>
-          </div> -->
-        <!-- </div> -->
-        <a href="{% url 'booking:booking' %}" class="bk-btn">Booking Now</a>
-      </div>
-      <nav class="mainmenu mobile-menu">
-        <ul>
-          <li><a href="{% url 'booking:index' %}">Home</a></li>
-          <li><a href="{% url 'booking:rooms' %}">Rooms</a></li>
-          <li><a href="{% url 'booking:about_us' %}">About Us</a></li>
-          <!-- <li>
-            <a href="./pages.html">Pages</a>
-            <ul class="dropdown">
-              <li><a href="./room-details.html">Room Details</a></li>
-              <li><a href="./blog-details.html">Blog Details</a></li>
-              <li><a href="#">Family Room</a></li>
-              <li><a href="#">Premium Room</a></li>
-            </ul>
-          </li>
-          <li><a href="./blog.html">News</a></li> -->
-          <li class="active">
-            <a href="{% url 'inquiries:customer_voice' %}">Customer Voice</a>
-          </li>
-        </ul>
-      </nav>
-      <div id="mobile-menu-wrap"></div>
-      <div class="top-social">
-        <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-tripadvisor"></i></a>
-        <a href="#"><i class="fa fa-instagram"></i></a>
-      </div>
-      <ul class="top-widget">
-        <li><i class="fa fa-phone"></i> (12) 345 67890</li>
-        <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
-      </ul>
-    </div>
-    <!-- Offcanvas Menu Section End -->
-
     <!-- Header Section Begin -->
     <header class="header-section header-normal">
       <div class="top-nav">
@@ -223,17 +142,13 @@
           <div class="row">
             <div class="col-lg-6">
               <ul class="tn-left">
-                <li><i class="fa fa-phone"></i> (12) 345 67890</li>
-                <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
+                <li><i class="fa fa-phone"></i>02-2222-2222</li>
+                <li><i class="fa fa-envelope"></i> hotelsona@gmail.com</li>
               </ul>
             </div>
             <div class="col-lg-6">
               <div class="tn-right">
                 <div class="top-social">
-                  <!-- <a href="#"><i class="fa fa-facebook"></i></a>
-                  <a href="#"><i class="fa fa-twitter"></i></a>
-                  <a href="#"><i class="fa fa-tripadvisor"></i></a>
-                  <a href="#"><i class="fa fa-instagram"></i></a> -->
                   <button
                     class="log"
                     type="button"
@@ -263,16 +178,6 @@
                 <a href="{% url 'booking:booking' %}" class="bk-btn"
                   >Booking Now</a
                 >
-                <!-- <div class="language-option">
-                  <img src="img/flag.jpg" alt="" />
-                  <span>EN <i class="fa fa-angle-down"></i></span> -->
-                <!-- <div class="flag-dropdown">
-                    <ul>
-                      <li><a href="#">Zi</a></li>
-                      <li><a href="#">Fr</a></li>
-                    </ul>
-                  </div> -->
-                <!-- </div> -->
               </div>
             </div>
           </div>
@@ -295,16 +200,7 @@
                     <li><a href="{% url 'booking:index' %}">Home</a></li>
                     <li><a href="{% url 'booking:rooms' %}">Rooms</a></li>
                     <li><a href="{% url 'booking:about_us' %}">About Us</a></li>
-                    <!-- <li>
-                      <a href="./pages.html">Pages</a>
-                      <ul class="dropdown">
-                        <li><a href="./room-details.html">Room Details</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
-                        <li><a href="#">Family Room</a></li>
-                        <li><a href="#">Premium Room</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="./blog.html">News</a></li> -->
+
                     <li class="active">
                       <a href="{% url 'inquiries:customer_voice' %}"
                         >Customer Voice</a
@@ -312,9 +208,6 @@
                     </li>
                   </ul>
                 </nav>
-                <!-- <div class="nav-right search-switch">
-                  <i class="icon_search"></i>
-                </div> -->
               </div>
             </div>
           </div>
@@ -340,16 +233,26 @@
       </div>
     </div>
 
-    <section class="contact-section spad" style="margin-top: -85px;">
-      <div class="intro" style="text-align: center; margin-bottom: 30px;"><p>호텔 Sona는 언제나 고객님의 목소리에 귀기울이고 있습니다.<br/> 
-        고객님들의 소중한 충고와 격려, 또는 제안을 말씀을 주시면 더 나은 서비스로 보답하겠습니다.</p></div>
-      <div class="qurstion-table" style="width:60%; margin-left: 20%;">
+    <section class="contact-section spad" style="margin-top: -85px">
+      <div class="intro" style="text-align: center; margin-bottom: 30px">
+        <p>
+          호텔 Sona는 언제나 고객님의 목소리에 귀기울이고 있습니다.<br />
+          고객님들의 소중한 충고와 격려, 또는 제안을 말씀을 주시면 더 나은
+          서비스로 보답하겠습니다.
+        </p>
+      </div>
+      <div class="qurstion-table" style="width: 60%; margin-left: 20%">
         <!-- 글쓰기 버튼 -->
-        <button style="width:10%; margin-left: 90%;margin-bottom: 30px;" class="btn" onclick="location.href='{% url 'inquiries:customer_question' %}'">글쓰기</button>
-        <table style="width:100%; text-align: center; ">
+        <button
+          style="width: 10%; margin-left: 90%; margin-bottom: 30px"
+          class="btn"
+          onclick="location.href='{% url 'inquiries:customer_question' %}'"
+        >
+          글쓰기
+        </button>
+        <table style="width: 100%; text-align: center">
           <thead>
-            <tr >
-              
+            <tr>
               <th>제목</th>
               <th>작성자</th>
               <th>답변 상태</th>
@@ -359,115 +262,45 @@
           <tbody>
             <!-- 게시글들의 목록 -->
             {% for question in questions %}
-            <tr style="border-bottom: 1px solid gray; cursor: pointer;" onclick="location.href='{% url 'inquiries:question_detail'  question.pk  %}'">
-            <td style="width:60%">{{ question.title }}</td>
-            <td style="width:15%">{{ question.author }}</td>
-            {% if question.answer %}
-            <td style="width:10%">답변완료</td>
-            {% else %}
-            <td style="width:10%">답변대기</td>
-            {% endif %}
-            <td style="width:20%">{{ question.created_date|date:"Y-m-d" }}</td>
+            <tr
+              style="border-bottom: 1px solid gray; cursor: pointer"
+              onclick="location.href='{% url 'inquiries:question_detail'  question.pk  %}'"
+            >
+              <td style="width: 60%">{{ question.title }}</td>
+              <td style="width: 15%">{{ question.author }}</td>
+              {% if question.answer %}
+              <td style="width: 10%">답변완료</td>
+              {% else %}
+              <td style="width: 10%">답변대기</td>
+              {% endif %}
+              <td style="width: 20%">
+                {{ question.created_date|date:"Y-m-d" }}
+              </td>
             </tr>
             {% endfor %}
           </tbody>
-          
         </table>
         <!-- 이전 페이지, 현재 페이지, 다음 페이지 버튼 추가 -->
-<!-- 페이징 기능 -->
-<div class="pagination">
-  {% if questions.has_previous %}
-      <a href="?page=1">&laquo; 처음</a>
-      <a href="?page={{ questions.previous_page_number }}">이전</a>
-  {% endif %}
-  {% for i in questions.paginator.page_range %}
-    {% if questions.number == i %}
-        <span class="current-page">{{ i }}</span>
-    {% else %}
-        <a href="?page={{ i }}">{{ i }}</a>
-    {% endif %}
-{% endfor %}
-
-{% if questions.has_next %}
-    <a href="?page={{ questions.next_page_number }}">다음</a>
-    <a href="?page={{ questions.paginator.num_pages }}">마지막 &raquo;</a>
-{% endif %}
-</div>
+        <!-- 페이징 기능 -->
+        <div class="pagination">
+          {% if questions.has_previous %}
+            <a href="?page=1">&laquo; 처음</a>
+            <a href="?page={{ questions.previous_page_number }}">이전</a>
+          {% endif %} 
+          {% for i in questions.paginator.page_range %} 
+            {% if questions.number == i %}
+              <span class="current-page">{{ i }}</span>
+            {% else %}
+              <a href="?page={{ i }}">{{ i }}</a>
+            {% endif %} 
+          {% endfor %}
+          {% if questions.has_next %}
+            <a href="?page={{ questions.next_page_number }}">다음</a>
+            <a href="?page={{ questions.paginator.num_pages }}">마지막 &raquo;</a>
+          {% endif %}
+        </div>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <!-- <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="contact-text">
-              <h2>Contact Info</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-              <table>
-                <tbody>
-                  <tr>
-                    <td class="c-o">Address:</td>
-                    <td>856 Cordia Extension Apt. 356, Lake, US</td>
-                  </tr>
-                  <tr>
-                    <td class="c-o">Phone:</td>
-                    <td>(12) 345 67890</td>
-                  </tr>
-                  <tr>
-                    <td class="c-o">Email:</td>
-                    <td>info.colorlib@gmail.com</td>
-                  </tr>
-                  <tr>
-                    <td class="c-o">Fax:</td>
-                    <td>+(12) 345 67890</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="col-lg-7 offset-lg-1">
-            <form action="#" class="contact-form">
-              <div class="row">
-                <div class="col-lg-6">
-                  <input type="text" placeholder="Your Name" />
-                </div>
-                <div class="col-lg-6">
-                  <input type="text" placeholder="Your Email" />
-                </div>
-                <div class="col-lg-12">
-                  <textarea placeholder="Your Message"></textarea>
-                  <button type="submit">Submit Now</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="map">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.0606825994123!2d-72.8735845851828!3d40.760690042573295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e85b24c9274c91%3A0xf310d41b791bcb71!2sWilliam%20Floyd%20Pkwy%2C%20Mastic%20Beach%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1578582744646!5m2!1sen!2sbd"
-            height="470"
-            style="border: 0"
-            allowfullscreen=""
-          ></iframe>
-        </div>
-      </div> -->
-    </section> 
+    </section>
     <!-- Contact Section End -->
 
     <!-- Footer Section Begin -->
@@ -499,22 +332,12 @@
               <div class="ft-contact">
                 <h6>Contact Us</h6>
                 <ul>
-                  <li>(12) 345 67890</li>
-                  <li>info.colorlib@gmail.com</li>
+                  <li>02-2222-2222</li>
+                  <li>hotelsona@gmail.com</li>
                   <li>856 Cordia Extension Apt. 356, Lake, United State</li>
                 </ul>
               </div>
             </div>
-            <!-- <div class="col-lg-3 offset-lg-1">
-              <div class="ft-newslatter">
-                <h6>New latest</h6>
-                <p>Get the latest updates and offers.</p>
-                <form action="#" class="fn-form">
-                  <input type="text" placeholder="Email" />
-                  <button type="submit"><i class="fa fa-send"></i></button>
-                </form>
-              </div>
-            </div> -->
           </div>
         </div>
       </div>
@@ -529,37 +352,11 @@
                 <li><a href="#">Environmental Policy</a></li>
               </ul>
             </div>
-            <div class="col-lg-5">
-              <div class="co-text">
-                <p>
-                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                  Copyright &copy;
-                  <script>
-                    document.write(new Date().getFullYear());
-                  </script>
-                  All rights reserved | This template is made with
-                  <i class="fa fa-heart" aria-hidden="true"></i> by
-                  <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </footer>
     <!-- Footer Section End -->
-
-    <!-- Search model Begin -->
-    <div class="search-model">
-      <div class="h-100 d-flex align-items-center justify-content-center">
-        <div class="search-close-switch"><i class="icon_close"></i></div>
-        <form class="search-model-form">
-          <input type="text" id="search-input" placeholder="Search here....." />
-        </form>
-      </div>
-    </div>
-    <!-- Search model end -->
 
     <!-- Js Plugins -->
     <script src="../../static/js/jquery-3.3.1.min.js"></script>

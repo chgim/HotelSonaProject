@@ -163,7 +163,7 @@ ol {
   content: "";
 }
 /* Preloder */
-
+/* 
 #preloder {
   position: fixed;
   width: 100%;
@@ -280,7 +280,7 @@ ol {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-}
+} */
 /*---------------------
   Header
 -----------------------*/
@@ -543,6 +543,7 @@ ol {
   background: #ffffff;
   padding: 44px 40px 50px 40px;
   border-radius: 4px;
+  margin-left: 500px;
 }
 .booking-form h3 {
   color: #19191a;
@@ -575,44 +576,7 @@ ol {
   right: 18px;
   bottom: 17px;
 }
-.booking-form form .select-option {
-  margin-bottom: 15px;
-}
-.booking-form form .select-option label {
-  font-size: 14px;
-  color: #707079;
-  display: block;
-  margin-bottom: 10px;
-}
-.booking-form form .select-option .nice-select {
-  border-radius: 2px;
-  border: 1px solid #ebebeb;
-  height: 50px;
-  line-height: 50px;
-  outline: none;
-  padding-left: 20px;
-  width: 100%;
-  float: none;
-}
-.booking-form form .select-option .nice-select:after {
-  border-bottom: 2px solid #dfa974;
-  border-right: 2px solid #dfa974;
-  height: 10px;
-  margin-top: 0;
-  right: 20px;
-  width: 10px;
-  top: 36%;
-}
-.booking-form form .select-option .nice-select span {
-  font-size: 16px;
-  color: #19191a;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-.booking-form form .select-option .nice-select .list {
-  margin-top: 0;
-  width: 100%;
-}
+
 .booking-form form button {
   display: block;
   font-size: 14px;
@@ -626,45 +590,7 @@ ol {
   height: 46px;
   margin-top: 30px;
 }
-.hero-slider {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-}
-.hero-slider.owl-carousel .owl-dots {
-  position: absolute;
-  left: 0;
-  bottom: 23px;
-  width: 100%;
-  text-align: center;
-}
-.hero-slider.owl-carousel .owl-dots button {
-  height: 6px;
-  width: 6px;
-  background: #ffffff;
-  opacity: 0.5;
-  border-radius: 50%;
-  margin-right: 10px;
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
-}
-.hero-slider.owl-carousel .owl-dots button.active {
-  width: 30px;
-  border-radius: 50px;
-  opacity: 1;
-}
-.hero-slider.owl-carousel .owl-dots button:last-child {
-  margin-right: 0;
-}
-.hero-slider .owl-stage-outer,
-.hero-slider .owl-stage,
-.hero-slider .owl-item,
-.hero-slider .hs-item {
-  height: 100%;
-}
+
 /*---------------------
   About US
 -----------------------*/
