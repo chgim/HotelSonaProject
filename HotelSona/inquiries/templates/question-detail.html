@@ -279,6 +279,9 @@
         >
           목록으로
         </button>
+        {% if question.author == request.user.username %}
+          <button class="btn" onclick="location.href='{% url 'inquiries:delete_question' question.id %}'">삭제하기</button>
+        {% endif %}
       </div>
     </section>
     <!-- Contact Section End -->

@@ -40,3 +40,13 @@ def question_detail(request, question_id):
     else:
         messages.error(request, '해당 질문은 비공개되어 있습니다.')
         return redirect('inquiries:customer_voice')
+    
+    
+def delete_question(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    if question.author == request.user.username:
+        question.delete()
+        messages.success(request, '질문이 성공적으로 삭제되었습니다.')
+    else:
+        messages.error(request, '질문 삭제 권한이 없습니다.')
+    return redirect('inquiries:customer_voice')
