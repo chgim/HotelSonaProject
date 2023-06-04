@@ -102,6 +102,7 @@
   </head>
 
   <body>
+  
     <!-- Page Preloder -->
     <div id="preloder">
       <div class="loader"></div>
@@ -234,12 +235,13 @@
         {% csrf_token %}
         <hr />
         <label for="author" style="width: 7%">작성자</label>
-        <input
-          type="text"
+          <input
+          type="email"
           id="author"
           name="author"
           required
           style="width: 50%"
+          value="{{ request.user.username }}"
         /><br />
         <hr />
 
@@ -261,6 +263,7 @@
           style="width: 93%"
         ></textarea
         ><br />
+       
         <div class="butns" style="margin-left: 7%">
           <button type="submit" class="btn">질문하기</button>
           <button

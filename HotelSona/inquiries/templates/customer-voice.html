@@ -130,6 +130,7 @@
   </head>
 
   <body>
+    
     <!-- Page Preloder -->
     <div id="preloder">
       <div class="loader"></div>
@@ -286,8 +287,8 @@
               style="border-bottom: 1px solid gray; cursor: pointer"
               onclick="location.href='{% url 'inquiries:question_detail'  question.pk  %}'"
             >
-              <td style="width: 60%">{{ question.title }}</td>
-              <td style="width: 15%">{{ question.author }}</td>
+              <td style="width: 50%">{{ question.title }}</td>
+              <td style="width: 25%">{{ question.author }}</td>
               {% if question.answer %}
               <td style="width: 10%">답변완료</td>
               {% else %}
