@@ -88,15 +88,17 @@
       th {
         color: white;
         background-color: #dfa974;
-        font-size: 18px;
+        font-size: 16px;
         padding-top: 8px;
         padding-bottom: 8px;
+       
       }
       td {
         border-bottom: 1px solid lightgray;
-        font-size: 17px;
+        font-size: 14px;
         padding-top: 7px;
         padding-bottom: 7px;
+       
       }
       .pagination {
         display: flex;
@@ -271,36 +273,42 @@
         >
           글쓰기
         </button>
-        <table style="width: 100%; text-align: center">
-          <thead>
-            <tr>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>답변 상태</th>
-              <th>작성일</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- 게시글들의 목록 -->
-            {% for question in questions %}
-            <tr
-              style="border-bottom: 1px solid gray; cursor: pointer"
-              onclick="location.href='{% url 'inquiries:question_detail'  question.pk  %}'"
-            >
-              <td style="width: 50%">{{ question.title }}</td>
-              <td style="width: 25%">{{ question.author }}</td>
-              {% if question.answer %}
-              <td style="width: 10%">답변완료</td>
-              {% else %}
-              <td style="width: 10%">답변대기</td>
-              {% endif %}
-              <td style="width: 20%">
-                {{ question.created_date|date:"Y-m-d" }}
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+        
+          <table style="width: 100%; text-align: center">
+            <thead>
+              <tr>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>답변 상태</th>
+                <th>작성일</th>
+                <th>공개여부</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for question in questions %}
+              <tr
+                style="border-bottom: 1px solid gray; cursor: pointer"
+                onclick="location.href='{% url 'inquiries:question_detail'  question.pk  %}'"
+              >
+                <td style="width: 47%">{{ question.title }}</td>
+                <td style="width: 19%">{{ question.author }}</td>
+                <td style="width: 14%">{{ question.created_date|date:"Y-m-d" }}</td>
+                {% if question.answer %}
+                <td style="width: 10%">답변완료</td>
+                {% else %}
+                <td style="width:10%">답변대기</td>
+                {% endif %}
+                
+                {% if question.is_public %}
+                <td style="width: 10%">공개</td>
+                {% else %}
+                <td style="width: 10%">비공개</td>
+                {% endif %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        
         <!-- 이전 페이지, 현재 페이지, 다음 페이지 버튼 추가 -->
         <!-- 페이징 기능 -->
         <div class="pagination">
