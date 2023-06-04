@@ -234,7 +234,8 @@
       class="login"
       style="font-family: 'Courier New', Courier, monospace; margin-top: -40px"
     >
-      <form>
+      <form method="POST" action="{% url 'accounts:register_view'%}">
+        {% csrf_token %}
         <!--액션동작 아직 없음-->
         <div class="title">이메일</div>
         <input
@@ -247,7 +248,7 @@
         <div class="title">비밀번호 (8자 이상)</div>
         <input
           type="password"
-          name="password"
+          name="password1"
           required
           class="text"
           placeholder="필수입력"

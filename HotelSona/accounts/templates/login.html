@@ -245,7 +245,8 @@
       class="login"
       style="margin-top: -40px; font-family: 'Courier New', Courier, monospace"
     >
-      <form>
+      <form method="POST" action="{% url 'accounts:login_view' %}">
+        {% csrf_token %}
         <!--액션 동작 아직 없음-->
         <input
           type="email"
@@ -274,6 +275,12 @@
           >이메일로 가입하기</a
         >
       </div>
+
+      {% if error %}
+      <script>
+        alert("{{ error }}");
+      </script>
+      {% endif %}
     </div>
     <!--로그인-->
     <!-- Footer Section Begin -->

@@ -157,62 +157,7 @@
       <div class="loader"></div>
     </div>
 
-    <!-- Offcanvas Menu Section Begin -->
-    <div class="offcanvas-menu-overlay"></div>
-    <div class="canvas-open">
-      <i class="icon_menu"></i>
-    </div>
-    <div class="offcanvas-menu-wrapper">
-      <div class="canvas-close">
-        <i class="icon_close"></i>
-      </div>
-
-      <div class="top-social">
-        <button
-          class="log"
-          type="button"
-          onclick="location.href='{% url 'accounts:login_view' %}'"
-          style="border: 0px; background-color: white; font-size: 15px"
-        >
-          Login
-        </button>
-        /
-        <button
-          class="myPage"
-          type="button"
-          onclick="location.href='{% url 'mypage:mypage_1' %}'"
-          style="border: 0px; background-color: white; font-size: 15px"
-        >
-          MyPage
-        </button>
-      </div>
-      <div class="header-configure-area">
-        <a href="{% url 'booking:booking' %}" class="bk-btn">Booking Now</a>
-      </div>
-      <nav class="mainmenu mobile-menu">
-        <ul>
-          <li><a href="{% url 'booking:index' %}">Home</a></li>
-          <li><a href="{% url 'booking:rooms' %}">Rooms</a></li>
-          <li><a href="{% url 'booking:about_us' %}">About Us</a></li>
-
-          <li>
-            <a href="{% url 'inquiries:customer_voice' %}">Customer Voice</a>
-          </li>
-        </ul>
-      </nav>
-      <div id="mobile-menu-wrap"></div>
-      <div class="top-social">
-        <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-tripadvisor"></i></a>
-        <a href="#"><i class="fa fa-instagram"></i></a>
-      </div>
-      <ul class="top-widget">
-        <li><i class="fa fa-phone"></i> (12) 345 67890</li>
-        <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
-      </ul>
-    </div>
-    <!-- Offcanvas Menu Section End -->
+    
 
     <!-- Header Section Begin -->
     <header class="header-section header-normal">
@@ -228,6 +173,26 @@
             <div class="col-lg-6">
               <div class="tn-right">
                 <div class="top-social">
+                  {% if user.is_authenticated %}
+                  <form
+                    action="{% url 'accounts:logout' %}"
+                    method="POST"
+                    style="margin: 0px; float: left"
+                  >
+                    {% csrf_token %}
+                    <button
+                      class="log"
+                      type="submit"
+                      style="
+                        border: 0px;
+                        background-color: white;
+                        font-size: 15px;
+                      "
+                    >
+                      Logout
+                    </button>
+                  </form>
+                  {% else %}
                   <button
                     class="log"
                     type="button"
@@ -240,7 +205,7 @@
                   >
                     Login
                   </button>
-                  /
+                  {% endif %} /
                   <button
                     class="myPage"
                     type="button"

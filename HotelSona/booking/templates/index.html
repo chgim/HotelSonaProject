@@ -123,6 +123,26 @@
             <div class="col-lg-6">
               <div class="tn-right">
                 <div class="top-social">
+                  {% if user.is_authenticated %}
+                  <form
+                    action="{% url 'accounts:logout' %}"
+                    method="POST"
+                    style="margin: 0px; float: left"
+                  >
+                    {% csrf_token %}
+                    <button
+                      class="log"
+                      type="submit"
+                      style="
+                        border: 0px;
+                        background-color: white;
+                        font-size: 15px;
+                      "
+                    >
+                      Logout
+                    </button>
+                  </form>
+                  {% else %}
                   <button
                     class="log"
                     type="button"
@@ -135,7 +155,7 @@
                   >
                     Login
                   </button>
-                  /
+                  {% endif %} /
                   <button
                     class="myPage"
                     type="button"
@@ -149,7 +169,6 @@
                     MyPage
                   </button>
                 </div>
-
                 <a href="{% url 'booking:booking' %}" class="bk-btn"
                   >Booking Now</a
                 >
