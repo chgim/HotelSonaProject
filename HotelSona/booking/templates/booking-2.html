@@ -329,12 +329,12 @@
             <div class="select-option">
               <div class="guests">
                 <div>Guests</div>
-                <div style="padding-left: 55px">
-                  <select id="guestSlt">
-                    <option value="">1 Adults</option>
-                    <option value="">2 Adults</option>
-                    <option value="">3 Adults</option>
-                    <option value="">4 Adults</option>
+                <div>
+                  <select id="guest" style="height: 40px">
+                    <option value="1">1 Adults</option>
+                    <option value="2">2 Adults</option>
+                    <option value="3">3 Adults</option>
+                    <option value="4">4 Adults</option>
                   </select>
                 </div>
               </div>
@@ -567,6 +567,28 @@
       var today = new Date(now_utc - timeOff).toISOString().split("T")[0];
       document.getElementById("check-in").setAttribute("min", today);
       document.getElementById("check-out").setAttribute("min", today);
+      // 체크인 날짜보다 체크아웃 날짜가 빠른 경우에 "날짜를 다시 선택해주세요"라는 알림 메시지를 표시하고 선택을 막음
+      document
+        .getElementById("check-out")
+        .addEventListener("change", function () {
+          var checkInDate = new Date(document.getElementById("check-in").value);
+          var checkOutDate = new Date(this.value);
+
+          if (checkOutDate < checkInDate) {
+            alert("날짜를 다시 선택해주세요.");
+            this.value = ""; // 체크아웃 날짜를 비워 선택을 막음
+          }
+        });
+      // URL 매개변수 가져오기
+      const urlParams = new URLSearchParams(window.location.search);
+      const checkIn = urlParams.get("check-in");
+      const checkOut = urlParams.get("check-out");
+      const guest = urlParams.get("guest");
+
+      // form 요소에 값 설정
+      document.getElementById("check-in").value = checkIn;
+      document.getElementById("check-out").value = checkOut;
+      document.getElementById("guest").value = guest;
     </script>
   </body>
 </html>

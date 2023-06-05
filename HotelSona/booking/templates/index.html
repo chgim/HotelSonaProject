@@ -103,7 +103,6 @@
   </head>
 
   <body>
- 
     <!--페이지 넘어갈때 모션-->
     <!-- Page Preloder -->
     <div id="preloder">
@@ -261,6 +260,7 @@
                 <label for="guest">Guests:</label>
                 <select
                   id="guest"
+                  name="guest"
                   style="
                     border: 1px solid #ebebeb;
                     height: 40px;
@@ -268,14 +268,17 @@
                     padding-left: 20px;
                   "
                 >
-                  <option value="">1 Adults</option>
-                  <option value="">2 Adults</option>
-                  <option value="">3 Adults</option>
-                  <option value="">4 Adults</option>
+                  <option value="1">1 Adults</option>
+                  <option value="2">2 Adults</option>
+                  <option value="3">3 Adults</option>
+                  <option value="4">4 Adults</option>
                 </select>
               </div>
 
-              <button type="submit">Check Availability</button>
+              <!-- <button type="submit">Check Availability</button> -->
+              <button type="submit" onclick="checkReservation();">
+                Check Availability
+              </button>
             </form>
           </div>
         </div>
@@ -558,6 +561,38 @@
       var today = new Date(now_utc - timeOff).toISOString().split("T")[0];
       document.getElementById("check-in").setAttribute("min", today);
       document.getElementById("check-out").setAttribute("min", today);
+      // 체크인 날짜보다 체크아웃 날짜가 빠른 경우에 "날짜를 다시 선택해주세요"라는 알림 메시지를 표시하고 선택을 막음
+      document
+        .getElementById("check-out")
+        .addEventListener("change", function () {
+          var checkInDate = new Date(document.getElementById("check-in").value);
+          var checkOutDate = new Date(this.value);
+
+          if (checkOutDate < checkInDate) {
+            alert("날짜를 다시 선택해주세요.");
+            this.value = ""; // 체크아웃 날짜를 비워 선택을 막음
+          }
+        });
+      // 값을 입력하지 않은 경우 alert 호출
+      function checkReservation() {
+        const checkInValue = document.getElementById("check-in").value;
+        const checkOutValue = document.getElementById("check-out").value;
+        const guestValue = document.getElementById("guest").value;
+
+        if (!checkInValue || !checkOutValue || !guestValue) {
+          alert("예약 정보를 입력해 주세요.");
+          return false;
+        } else {
+          // 해당 페이지로 쿼리 매개변수를 사용하여 값을 넘겨줌.
+          window.location.href =
+            "/booking.html?check-in=" +
+            document.getElementById("check-in").value +
+            "&check-out=" +
+            document.getElementById("check-out").value +
+            "&guest=" +
+            document.getElementById("guest").value;
+        }
+      }
     </script>
     <!-- Js Plugins --><!--플러그인 지울 시 무한 로딩-->
     <script src="../../static/js/jquery-3.3.1.min.js"></script>
