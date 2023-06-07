@@ -197,12 +197,44 @@
     <!-- Breadcrumb Section End -->
 
     <!-- Rooms Section Begin -->
+
     <section class="rooms-section spad">
+      <div class="container">
+        <div class="row">
+          {% for room in rooms %}
+          <div class="col-lg-4 col-md-6">
+            <div class="room-item">
+              <img src="{{ room.image.url }}" alt="{{ room.name }}" />
+              <div class="ri-text">
+                <h4>{{ room.name }}</h4>
+                <h3>{{ room.price }}KRW<span>/Pernight</span></h3>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td class="r-o">Size:</td>
+                      <td>{{ room.size }} ft</td>
+                    </tr>
+                    <tr>
+                      <td class="r-o">Capacity:</td>
+                      <td>Max person {{ room.capacity }}</td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+               
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    <!-- <section class="rooms-section spad">
       <div class="container">
         <div class="row">
           <div class="col-lg-4 col-md-6">
             <div class="room-item">
-              <!-- <img src="img/room/room-3.jpg" alt="" /> -->
+              
 
               <img src="../../static/img/room/room-1.jpg" alt="" />
               <div class="ri-text">
@@ -228,14 +260,14 @@
                     </tr>
                   </tbody>
                 </table>
-                <!-- <a href="#" class="primary-btn">More Details</a> -->
+                
               </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="room-item">
               <img src="../../static/img/room/room-3.jpg" alt="" />
-              <!-- <img src="img/room/room-2.jpg" alt="" /> -->
+             
               <div class="ri-text">
                 <h4>Deluxe Room</h4>
                 <h3>60,000KRW<span>/Pernight</span></h3>
@@ -259,13 +291,13 @@
                     </tr>
                   </tbody>
                 </table>
-                <!-- <a href="#" class="primary-btn">More Details</a> -->
+               
               </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="room-item">
-              <!-- <img src="img/room/room-1.jpg" alt="" /> -->
+              
               <img src="../../static/img/room/room-2.jpg" alt="" />
               <div class="ri-text">
                 <h4>Premium King Room</h4>
@@ -290,7 +322,7 @@
                     </tr>
                   </tbody>
                 </table>
-                <!-- <a href="#" class="primary-btn">More Details</a> -->
+              
               </div>
             </div>
           </div>
@@ -321,13 +353,13 @@
                     </tr>
                   </tbody>
                 </table>
-                <!-- <a href="#" class="primary-btn">More Details</a> -->
+                
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     <!-- Rooms Section End -->
 
     <!-- Footer Section Begin -->

@@ -97,7 +97,10 @@
         position: absolute;
         left: 310px;
       }
-
+      .hp-room-items .room-item {
+       
+      }
+     
       /**/
     </style>
   </head>
@@ -345,136 +348,31 @@
       <div class="container-fluid">
         <div class="hp-room-items">
           <div class="row">
+            {% for room in rooms %}
             <div class="col-lg-3 col-md-6">
-              <div class="hp-room-item set-bg">
-                <img src="../../static/img/room/room-b1.jpg" />
-
-                <div class="hr-text">
-                  <h3>Double Room</h3>
-                  <h2>50,000KRW <span> /Pernight</span></h2>
+              <div class="room-item" >
+                <img src="{{ room.image.url }}" alt="{{ room.name }}" />
+                <div class="ri-text">
+                  <h4>{{ room.name }}</h4>
+                  <h3>{{ room.price }}KRW<span>/Pernight</span></h3>
                   <table>
                     <tbody>
                       <tr>
                         <td class="r-o">Size:</td>
-                        <td>30 ft</td>
+                        <td>{{ room.size }} ft</td>
                       </tr>
                       <tr>
                         <td class="r-o">Capacity:</td>
-                        <td>Max persion 2</td>
+                        <td>Max person {{ room.capacity }}</td>
                       </tr>
-                      <tr>
-                        <td class="r-o">Bed:</td>
-                        <td>King Beds</td>
-                      </tr>
-                      <tr>
-                        <td class="r-o">Services:</td>
-                        <td>Wifi, Television, Bathroom,...</td>
-                      </tr>
+                      
                     </tbody>
                   </table>
-                  <a href="{% url 'booking:rooms' %}" class="primary-btn"
-                    >More Details</a
-                  >
+                 
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-              <div class="hp-room-item set-bg">
-                <img src="../../static/img/room/room-b3.jpg" />
-                <div class="hr-text">
-                  <h3>Deluxe Room</h3>
-                  <h2>60,000KRW <span>/Pernight</span></h2>
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td class="r-o">Size:</td>
-                        <td>35 ft</td>
-                      </tr>
-                      <tr>
-                        <td class="r-o">Capacity:</td>
-                        <td>Max persion 2</td>
-                      </tr>
-                      <tr>
-                        <td class="r-o">Bed:</td>
-                        <td>King Beds</td>
-                      </tr>
-                      <tr>
-                        <td class="r-o">Services:</td>
-                        <td>Wifi, Television, Bathroom,...</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <a href="{% url 'booking:rooms' %}" class="primary-btn"
-                    >More Details</a
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-              <div class="hp-room-item set-bg">
-                <img src="../../static/img/room/room-b2.jpg" />
-                <div class="hr-text">
-                  <h3>Premium King Room</h3>
-                  <h2>70,000KRW <span>/Pernight</span></h2>
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td class="r-o">Size:</td>
-                        <td>40 ft</td>
-                      </tr>
-                      <tr>
-                        <td class="r-o">Capacity:</td>
-                        <td>Max persion 3</td>
-                      </tr>
-                      <tr>
-                        <td class="r-o">Bed:</td>
-                        <td>King Beds</td>
-                      </tr>
-                      <tr>
-                        <td class="r-o">Services:</td>
-                        <td>Wifi, Television, Bathroom,...</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <a href="{% url 'booking:rooms' %}" class="primary-btn"
-                    >More Details</a
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-              <div class="hp-room-item set-bg">
-                <img src="../../static/img/room/room-b4.jpg" />
-                <div class="hr-text">
-                  <h3>Family Room</h3>
-                  <h2>80,000KRW <span>/Pernight</span></h2>
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td class="r-o">Size:</td>
-                        <td>45 ft</td>
-                      </tr>
-                      <tr>
-                        <td class="r-o">Capacity:</td>
-                        <td>Max persion 4</td>
-                      </tr>
-                      <tr>
-                        <td class="r-o">Bed:</td>
-                        <td>King Beds</td>
-                      </tr>
-                      <tr>
-                        <td class="r-o">Services:</td>
-                        <td>Wifi, Television, Bathroom,...</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <a href="{% url 'booking:rooms' %}" class="primary-btn"
-                    >More Details</a
-                  >
-                </div>
-              </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from .models import Room
 # Create your views here.
 
 
@@ -18,10 +19,12 @@ def booking_3(request):
 def booking(request):
     return render(request, 'booking.html')
 
-
+# 두개는 끝
 def index(request):
-    return render(request, 'index.html')
+    all_rooms = Room.objects.all()
+    return render(request, 'index.html', {'rooms': all_rooms})
 
 
 def rooms(request):
-    return render(request, 'rooms.html')
+    all_rooms = Room.objects.all()
+    return render(request, 'rooms.html', {'rooms': all_rooms})

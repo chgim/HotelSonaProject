@@ -173,6 +173,7 @@
       .title {
         font-weight: 600;
         color: #424242;
+        
       }
       .ReservationComp,
       .return {
@@ -380,12 +381,12 @@
           </button>
         </div>
         <div class="customerInfo" style="margin-top: 50px">
-          <form style="all: initial">
-            <h4>고객 정보 입력</h4>
-            <hr />
+          <form id="bookingForm" style="all: initial" action="#">
+            <!-- <h4>고객 정보 입력</h4>
+            <hr /> -->
 
             <!--액션동작 아직 없음-->
-            <div class="title">투숙객명*</div>
+            <!-- <div class="title">투숙객명*</div>
             <input
               type="text"
               name="name"
@@ -473,9 +474,9 @@
               name="birth"
               class="text"
               placeholder="YYYYMMDD"
-            />
+            /> -->
 
-            <div class="paymentInfo" style="margin-top: 50px">
+            <div class="paymentInfo" style="margin-top: 100px">
               <h4>결제 정보</h4>
               <hr />
               <div class="title">결제방법</div>
