@@ -9,7 +9,17 @@ def about_us(request):
 
 @login_required
 def booking_2(request):
-    return render(request, 'booking-2.html')
+    if request.method == "POST":
+        check_in = request.POST.get("check-in")
+        check_out = request.POST.get("check-out")
+        guest_count = request.POST.get("guest")
+
+        # 방 예약 가능한 조건을 쿼리로 작성하여 필터링
+        available_rooms = Room.objects.filter(capacity__gte=guest_count, availRoom__gt=0) # availRoom이 1보다 작지 않고 guest가 각 룸의 수용인원보다 커야함.
+
+        return render(request, "booking-2.html", {'rooms': available_rooms})
+
+    return render(request, "booking-2.html")
 
 @login_required
 def booking_3(request):

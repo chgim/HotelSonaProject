@@ -69,7 +69,7 @@
     <style>
       .contentBox {
         width: 60%; /*기준선*/
-        height: 1550px;
+        
         border: 0px;
 
         margin: 0 auto;
@@ -301,7 +301,8 @@
       <div class="calenderBox">
         <hr style="background-color: #dfa974" />
         <div style="width: 800px; margin: 0 auto">
-          <form id="bookingInfoForm" action="#"><!--여기서 해당 날짜와 인원에 남아있는 객실 보여줌.-->
+          <form id="bookingInfoForm" action="{% url 'booking:booking_2' %}" method="POST"><!--여기서 해당 날짜와 인원에 남아있는 객실 보여줌.-->
+            {% csrf_token %}
             <div class="check-in">
               Check In
 
@@ -330,7 +331,7 @@
               <div class="guests">
                 <div>Guests</div>
                 <div>
-                  <select id="guest" style="height: 40px">
+                  <select id="guest" name="guest"  style="height: 40px">
                     <option value="1">1 Adults</option>
                     <option value="2">2 Adults</option>
                     <option value="3">3 Adults</option>
@@ -345,7 +346,7 @@
               <div>
                 <button
                   class="SearchRooms"
-                  type="button"
+                  type="submit"
                   onclick="checkReservation();"
                 >
                   객실조회
@@ -358,6 +359,39 @@
       </div>
       <!--rooms-->
       <form id="bookingRoomForm" action="{% url 'booking:booking_3' %}">
+        <div class="availRooms">
+          <!-- 방 정보를 순회하며 필요한 정보 표시 -->
+          {% for room in rooms %}
+          <div class="{{ room.name }}" style="display: inline-block;">
+            <div class="room-images" style="display: inline-block;">
+              <img
+                src="{{ room.image.url }}" alt="{{ room.name }}"
+                style="height: 270px;"
+              />
+            </div>
+            <div class="room-contents" style="display: inline-block; vertical-align: top; padding-left: 60px;">
+              <h3 style="margin-bottom: 10px;">{{ room.name }}</h3>
+        
+              <span style="font-size: 33px; font-weight: bold; color: #dfa974">
+                {{ room.price }}KRW
+              </span>
+              <span style="font-size: 14px">/Pernight</span><br />
+              Size: {{ room.size }} ft<br />
+              Capacity: Max person {{ room.capacity }}<br />
+              <br/>
+              <div class="btn">
+                <button class="SelectRooms" type="submit" >
+                  선택
+                </button>
+              </div>
+            </div>
+          </div>
+          <hr/>
+          {% endfor %}
+        </div>
+      </form>
+      
+      <!-- <form id="bookingRoomForm" action="{% url 'booking:booking_3' %}">
       <div class="availRooms">
         <div class="DoubleRoom">
           <div class="room-images" style="display: inline-block">
@@ -492,7 +526,7 @@
           <hr />
         </div>
       </div>
-    </form>
+    </form> -->
       <!--rooms-->
     </div>
     <!--content end-->
@@ -604,27 +638,27 @@
       document.getElementById("check-out").value = checkOut;
       document.getElementById("guest").value = guest;
 
-      function selectRoom(roomName, price) {
-      // form 요소 선택
-      var form = document.getElementById('bookingRoomForm');
+    //   function selectRoom(roomName, price) {
+    //   // form 요소 선택
+    //   var form = document.getElementById('bookingRoomForm');
 
-      // 선택한 룸 정보를 hidden input 요소로 추가
-      var roomInput = document.createElement('input');
-      roomInput.type = 'hidden';
-      roomInput.name = 'room';
-      roomInput.value = roomName;
-      form.appendChild(roomInput);
+    //   // 선택한 룸 정보를 hidden input 요소로 추가
+    //   var roomInput = document.createElement('input');
+    //   roomInput.type = 'hidden';
+    //   roomInput.name = 'room';
+    //   roomInput.value = roomName;
+    //   form.appendChild(roomInput);
 
-      // 선택한 룸 가격 정보를 hidden input 요소로 추가
-      var priceInput = document.createElement('input');
-      priceInput.type = 'hidden';
-      priceInput.name = 'price';
-      priceInput.value = price;
-      form.appendChild(priceInput);
+    //   // 선택한 룸 가격 정보를 hidden input 요소로 추가
+    //   var priceInput = document.createElement('input');
+    //   priceInput.type = 'hidden';
+    //   priceInput.name = 'price';
+    //   priceInput.value = price;
+    //   form.appendChild(priceInput);
 
-      // form 제출
-      form.submit();
-    }
+    //   // form 제출
+    //   form.submit();
+    // }
     </script>
   </body>
 </html>

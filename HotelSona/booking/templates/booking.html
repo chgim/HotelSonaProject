@@ -289,7 +289,8 @@
       <div class="calenderBox">
         <hr style="background-color: #dfa974" />
         <div style="width: 800px; margin: 0 auto">
-          <form action="{% url 'booking:booking_2' %}">
+          <form action="{% url 'booking:booking_2' %}" method="POST">
+            {% csrf_token %}
             <div class="check-in">
               Check In
 
@@ -318,8 +319,9 @@
               <div class="guests">
                 <div>Guests</div>
                 <div>
+                  
                   <select id="guest" name="guest" style="height: 40px">
-                    <option value="1">1 Adults</option>
+                    <option value="1" >1 Adults</option>
                     <option value="2">2 Adults</option>
                     <option value="3">3 Adults</option>
                     <option value="4">4 Adults</option>

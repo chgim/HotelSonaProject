@@ -7,11 +7,12 @@ class Room(models.Model):
     price = models.PositiveIntegerField()
     size = models.PositiveIntegerField()
     capacity = models.PositiveIntegerField()
+    availRoom=models.PositiveIntegerField() # 현재는 3으로 고정 해놓음
 
 
     def __str__(self):
         return self.name
-
+# 임시
 class Reservation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
