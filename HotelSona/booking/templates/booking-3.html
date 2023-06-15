@@ -357,19 +357,19 @@
           <table>
             <tr>
               <td>체크인</td>
-              <td>?</td>
+              <td>{{ check_in }}</td>
             </tr>
             <tr>
               <td>체크아웃</td>
-              <td>?</td>
+              <td>{{ check_out }}</td>
             </tr>
             <tr>
               <td>인원</td>
-              <td>?</td>
+              <td>{{ guest_count }}</td>
             </tr>
             <tr>
               <td>객실</td>
-              <td>?</td>
+              <td>{{ selected_room }}</td>
             </tr>
           </table>
           <button
@@ -382,99 +382,7 @@
         </div>
         <div class="customerInfo" style="margin-top: 50px">
           <form id="bookingForm" style="all: initial" action="#">
-            <!-- <h4>고객 정보 입력</h4>
-            <hr /> -->
-
-            <!--액션동작 아직 없음-->
-            <!-- <div class="title">투숙객명*</div>
-            <input
-              type="text"
-              name="name"
-              class="text"
-              placeholder="투숙객명"
-              required
-            /><br />
-
-            <div class="em">
-              <div class="title">이메일*</div>
-              <input
-                style="width: 337px"
-                type="text"
-                id="email_id"
-                class="form_w200"
-                value=""
-                title="이메일 아이디"
-                placeholder="이메일"
-                maxlength="18"
-                required
-              />
-              @
-              <input
-                type="text"
-                style="width: 336px"
-                id="email_domain"
-                class="form_w200"
-                value=""
-                title="이메일 도메인"
-                placeholder="이메일 도메인"
-                maxlength="18"
-                required
-              />
-            </div>
-
-            <div class="title">휴대폰번호</div>
-            <input
-              type="text"
-              name="cellPhone"
-              id="cellPhone"
-              placeholder="핸드폰번호 입력"
-              maxlength="13"
-              required
-            />
-            <script>
-              function autoHypenPhone(str) {
-                str = str.replace(/[^0-9]/g, "");
-                var tmp = "";
-                if (str.length < 4) {
-                  return str;
-                } else if (str.length < 7) {
-                  tmp += str.substr(0, 3);
-                  tmp += "-";
-                  tmp += str.substr(3);
-                  return tmp;
-                } else if (str.length < 11) {
-                  tmp += str.substr(0, 3);
-                  tmp += "-";
-                  tmp += str.substr(3, 3);
-                  tmp += "-";
-                  tmp += str.substr(6);
-                  return tmp;
-                } else {
-                  tmp += str.substr(0, 3);
-                  tmp += "-";
-                  tmp += str.substr(3, 4);
-                  tmp += "-";
-                  tmp += str.substr(7);
-                  return tmp;
-                }
-                return str;
-              }
-
-              var cellPhone = document.getElementById("cellPhone");
-              cellPhone.onkeyup = function (event) {
-                event = event || window.event;
-                var _val = this.value.trim();
-                this.value = autoHypenPhone(_val);
-              };
-            </script>
-
-            <div class="title">생년월일 8자리 (선택)</div>
-            <input
-              type="text"
-              name="birth"
-              class="text"
-              placeholder="YYYYMMDD"
-            /> -->
+          
 
             <div class="paymentInfo" style="margin-top: 100px">
               <h4>결제 정보</h4>
@@ -663,7 +571,7 @@
     <script src="../../static/js/main.js"></script>
 
     <script>
-      //tell
+       /* 폰 번호 입력 시 자동으로 하이픈(-) 생성 */
       function autoHypenPhone(str) {
         str = str.replace(/[^0-9]/g, "");
         var tmp = "";

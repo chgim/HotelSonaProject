@@ -301,7 +301,7 @@
       <div class="calenderBox">
         <hr style="background-color: #dfa974" />
         <div style="width: 800px; margin: 0 auto">
-          <form id="bookingInfoForm" action="{% url 'booking:booking_2' %}" method="POST"><!--여기서 해당 날짜와 인원에 남아있는 객실 보여줌.-->
+          <form id="bookingInfoForm" action="{% url 'booking:booking_2' %}" method="POST"> 
             {% csrf_token %}
             <div class="check-in">
               Check In
@@ -313,6 +313,7 @@
                 required
                 pattern="\d{4}-\d{2}-\d{2}"
                 style="height: 40px"
+                
               />
             </div>
             <div class="check-out">
@@ -325,13 +326,14 @@
                 required
                 pattern="\d{4}-\d{2}-\d{2}"
                 style="height: 40px"
+                
               />
             </div>
             <div class="select-option">
               <div class="guests">
                 <div>Guests</div>
                 <div>
-                  <select id="guest" name="guest"  style="height: 40px">
+                  <select id="guest" name="guest" style="height: 40px">
                     <option value="1">1 Adults</option>
                     <option value="2">2 Adults</option>
                     <option value="3">3 Adults</option>
@@ -358,7 +360,9 @@
         <hr style="margin-top: 200px" />
       </div>
       <!--rooms-->
-      <form id="bookingRoomForm" action="{% url 'booking:booking_3' %}">
+      <form id="bookingRoomForm" action="{% url 'booking:booking_3' %}" method="GET">
+        {% csrf_token %} 
+        
         <div class="availRooms">
           <!-- 방 정보를 순회하며 필요한 정보 표시 -->
           {% for room in rooms %}
@@ -380,7 +384,7 @@
               Capacity: Max person {{ room.capacity }}<br />
               <br/>
               <div class="btn">
-                <button class="SelectRooms" type="submit" >
+                <button class="SelectRooms" type="submit" name="selected_room" value="{{ room.name }}">
                   선택
                 </button>
               </div>
@@ -389,144 +393,13 @@
           <hr/>
           {% endfor %}
         </div>
+        <!-- hidden input 요소로 bookingInfoForm의 값 전달 -->
+        <input type="hidden" name="check-in" id="room-check-in">
+        <input type="hidden" name="check-out" id="room-check-out">
+        <input type="hidden" name="guest" id="room-guest">
       </form>
       
-      <!-- <form id="bookingRoomForm" action="{% url 'booking:booking_3' %}">
-      <div class="availRooms">
-        <div class="DoubleRoom">
-          <div class="room-images" style="display: inline-block">
-            <img
-              src="../../static/img/room/room-1.jpg"
-              alt=""
-              style="height: 270px"
-            />
-          </div>
-          <div
-            class="room-contents"
-            style="display: inline-block; padding-left: 60px"
-          >
-            <h3 style="margin-bottom: 10px">Double Room</h3>
-
-            <span style="font-size: 33px; font-weight: bold; color: #dfa974"
-              >50,000KRW</span
-            ><span style="font-size: 14px">/Pernight</span><br />
-            Size: 30 ft<br />
-            Capacity: Max persion 2
-            <br />
-          </div>
-          <div class="btn">
-            <button
-              class="SelectRooms"
-              type="button"
-              onclick="selectRoom('Double Room', '50000')"
-              style="margin-left: 30px"
-            >
-              선택
-            </button>
-          </div>
-          <hr />
-        </div>
-        <div class="DeluxeRoom">
-          <div class="room-images" style="display: inline-block">
-            <img
-              src="../../static/img/room/room-3.jpg"
-              alt=""
-              style="height: 270px"
-            />
-          </div>
-          <div
-            class="room-contents"
-            style="display: inline-block; padding-left: 60px"
-          >
-            <h3 style="margin-bottom: 10px">Deluxe Room</h3>
-
-            <span style="font-size: 33px; font-weight: bold; color: #dfa974"
-              >60,000KRW</span
-            ><span style="font-size: 14px">/Pernight</span><br />
-            Size: 35 ft<br />
-            Capacity: Max persion 2
-            <br />
-          </div>
-          <div class="btn">
-            <button
-              class="SelectRooms"
-              type="button"
-              onclick="selectRoom('Deluxe Room', '60000')"
-              style="margin-left: 30px"
-            >
-              선택
-            </button>
-          </div>
-          <hr />
-        </div>
-        <div class="PremiumKingRoom">
-          <div class="room-images" style="display: inline-block">
-            <img
-              src="../../static/img/room/room-2.jpg"
-              alt=""
-              style="height: 270px"
-            />
-          </div>
-          <div
-            class="room-contents"
-            style="display: inline-block; padding-left: 60px"
-          >
-            <h3 style="margin-bottom: 10px">Premium King Room</h3>
-
-            <span style="font-size: 33px; font-weight: bold; color: #dfa974"
-              >70,000KRW</span
-            ><span style="font-size: 14px">/Pernight</span><br />
-            Size: 40 ft<br />
-            Capacity: Max persion 3
-            <br />
-          </div>
-          <div class="btn">
-            <button
-              class="SelectRooms"
-              type="button"
-              onclick="selectRoom('Premium King Room', '70000')"
-              style="margin-left: -2px"
-            >
-              선택
-            </button>
-          </div>
-          <hr />
-        </div>
-        <div class="FamilyRoom">
-          <div class="room-images" style="display: inline-block">
-            <img
-              src="../../static/img/room/room-5.jpg"
-              alt=""
-              style="height: 270px"
-            />
-          </div>
-          <div
-            class="room-contents"
-            style="display: inline-block; padding-left: 60px"
-          >
-            <h3 style="margin-bottom: 10px">Family Room</h3>
-
-            <span style="font-size: 33px; font-weight: bold; color: #dfa974"
-              >80,000KRW</span
-            ><span style="font-size: 14px">/Pernight</span><br />
-            Size: 45 ft<br />
-            Capacity: Max persion 4
-            <br />
-          </div>
-          <div class="btn">
-            <button
-              class="SelectRooms"
-              type="button"
-              onclick="selectRoom('Family Room', '80000')"
-              style="margin-left: 30px"
-            >
-              선택
-            </button>
-          </div>
-          <hr />
-        </div>
-      </div>
-    </form> -->
+      
       <!--rooms-->
     </div>
     <!--content end-->
@@ -597,6 +470,9 @@
     <script src="../../static/js/main.js"></script>
 
     <script>
+
+      /* 오늘 이전의 날짜 선택 x, 체크인 날짜보다 체크아웃 날짜가 빠도록 입력 하는 것을 방지. */
+
       // 오늘 이전의 날짜 선택 x
       var now_utc = Date.now();
       var timeOff = new Date().getTimezoneOffset() * 60000;
@@ -616,7 +492,9 @@
           }
         });
 
-       // 값을 입력하지 않은 경우 alert 호출
+        
+       /* 값을 입력하지 않은 경우 alert 호출 */
+
       function checkReservation() {
         const checkInValue = document.getElementById("check-in").value;
         const checkOutValue = document.getElementById("check-out").value;
@@ -627,6 +505,9 @@
           return false;
         } 
       } 
+
+      /* 이전 페이지에서 입력한 form 데이터를 해당 페이지로 넘겨주기 위해 urlParams 사용 */
+
       // URL 매개변수 가져오기
       const urlParams = new URLSearchParams(window.location.search);
       const checkIn = urlParams.get("check-in");
@@ -637,28 +518,25 @@
       document.getElementById("check-in").value = checkIn;
       document.getElementById("check-out").value = checkOut;
       document.getElementById("guest").value = guest;
+      
 
-    //   function selectRoom(roomName, price) {
-    //   // form 요소 선택
-    //   var form = document.getElementById('bookingRoomForm');
+      /* bookingInfoForm에서 form action을 눌러 필터링 된 룸을 보여주며 form 요소들이 초기화 되는걸 방지*/
 
-    //   // 선택한 룸 정보를 hidden input 요소로 추가
-    //   var roomInput = document.createElement('input');
-    //   roomInput.type = 'hidden';
-    //   roomInput.name = 'room';
-    //   roomInput.value = roomName;
-    //   form.appendChild(roomInput);
+      // 이전에 입력된 값 가져오기
+      var checkInValue = "{{ check_in }}";
+      var checkOutValue = "{{ check_out }}";
+      var guestValue = "{{ guest_count }}";
 
-    //   // 선택한 룸 가격 정보를 hidden input 요소로 추가
-    //   var priceInput = document.createElement('input');
-    //   priceInput.type = 'hidden';
-    //   priceInput.name = 'price';
-    //   priceInput.value = price;
-    //   form.appendChild(priceInput);
+      // 입력 필드의 값을 설정
+      document.getElementById("check-in").value = checkInValue;
+      document.getElementById("check-out").value = checkOutValue;
+      document.getElementById("guest").value = guestValue;
 
-    //   // form 제출
-    //   form.submit();
-    // }
+       
+      /* bookingInfoForm의 값을 hidden input 요소에 설정. input 값 넘겨주기 */
+      document.getElementById("room-check-in").value = document.getElementById("check-in").value;
+      document.getElementById("room-check-out").value = document.getElementById("check-out").value;
+      document.getElementById("room-guest").value = document.getElementById("guest").value;
     </script>
   </body>
 </html>

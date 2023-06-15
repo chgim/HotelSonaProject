@@ -1,13 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Room(models.Model):
+class Room(models.Model): # 관리자 페이지에서 룸 생성 가능
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='UploadAdminImages/') # ImageField Pillow 라이브러리 설치 필요
     price = models.PositiveIntegerField()
     size = models.PositiveIntegerField()
     capacity = models.PositiveIntegerField()
-    availRoom=models.PositiveIntegerField() # 현재는 3으로 고정 해놓음
+    availRoom=models.PositiveIntegerField() 
 
 
     def __str__(self):

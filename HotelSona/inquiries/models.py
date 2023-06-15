@@ -13,7 +13,7 @@ class Question(models.Model):
     title = models.CharField(max_length=50)
     content = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
-    answer = models.OneToOneField('Answer', on_delete=models.CASCADE, null=True, blank=True)
+    answer = models.OneToOneField('Answer', on_delete=models.CASCADE, null=True, blank=True) # 관리자의 답변 여부
     is_public = models.BooleanField(default=True)  # 공개 여부를 나타내는 필드
 
     def __str__(self):

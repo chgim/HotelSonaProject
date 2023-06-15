@@ -282,6 +282,9 @@
         required
       />
       <script>
+
+        /* 폰 번호 입력 시 자동으로 하이픈(-) 생성 */
+
         function autoHypenPhone(str) {
           str = str.replace(/[^0-9]/g, "");
           var tmp = "";

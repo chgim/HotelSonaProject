@@ -126,7 +126,7 @@
             <div class="col-lg-6">
               <div class="tn-right">
                 <div class="top-social">
-                  {% if user.is_authenticated %}
+                  {% if user.is_authenticated %} <!--로그인 중일 시 -->
                   <form
                     action="{% url 'accounts:logout' %}"
                     method="POST"
@@ -432,7 +432,9 @@
     </footer>
     <!-- Footer Section End -->
     <script>
-      //슬라이드
+      
+      /* 이미지 슬라이드 구현 */
+
       document.addEventListener("DOMContentLoaded", function () {
         var slides = document.querySelectorAll(".background-slide");
         var currentSlide = 0;
@@ -453,7 +455,8 @@
         setInterval(nextSlide, 3000); // 3초마다 슬라이드 변경
       });
 
-      // 오늘 이전의 날짜 선택 x
+      /* 오늘 이전의 날짜 선택 x, 체크인 날짜보다 체크아웃 날짜가 빠도록 입력 하는 것을 방지. */
+
       var now_utc = Date.now();
       var timeOff = new Date().getTimezoneOffset() * 60000;
       var today = new Date(now_utc - timeOff).toISOString().split("T")[0];
@@ -471,7 +474,10 @@
             this.value = ""; // 체크아웃 날짜를 비워 선택을 막음
           }
         });
-      // 값을 입력하지 않은 경우 alert 호출
+
+
+      /* 값을 입력하지 않은 경우 alert 호출, 원하는 페이지로 쿼리 매개변수를 사용하여 값을 넘겨줌*/
+
       function checkReservation() {
         const checkInValue = document.getElementById("check-in").value;
         const checkOutValue = document.getElementById("check-out").value;
