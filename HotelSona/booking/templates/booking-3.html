@@ -196,6 +196,10 @@
       .ReservationComp:active {
         background-color: #bf8d5b;
       }
+     
+      th{
+        width: 50%;
+      }
     </style>
   </head>
 
@@ -356,19 +360,19 @@
           <hr />
           <table>
             <tr>
-              <td>체크인</td>
+              <th>체크인: </th>
               <td>{{ check_in }}</td>
             </tr>
             <tr>
-              <td>체크아웃</td>
+              <th>체크아웃: </th>
               <td>{{ check_out }}</td>
             </tr>
             <tr>
-              <td>인원</td>
+              <th>인원: </th>
               <td>{{ guest_count }}</td>
             </tr>
             <tr>
-              <td>객실</td>
+              <th>객실: </th>
               <td>{{ selected_room }}</td>
             </tr>
           </table>
