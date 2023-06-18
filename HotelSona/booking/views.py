@@ -83,20 +83,16 @@ def booking_3_complete(request):
         if existing_reservation.exists():
             messages.error(request, "이미 예약된 내역이 있습니다.")
             return redirect('booking:booking_3')
-    
-
-        # reservation 모델에 저장
-        reservation = Reservation.objects.create(user=request.user, room=room, check_in=check_in, check_out=check_out,
+        else:
+            # reservation 모델에 저장
+            reservation = Reservation.objects.create(user=request.user, room=room, check_in=check_in, check_out=check_out,
                                                  guest_count=guest_count, card_number=card_number,
                                                  expiry_date=expiry_date, guest_name=guest_name,
                                                  )
-
-       
-        reservation.save()  # Reservation 모델의 save 메서드 호출하여 예약 정보 저장
-
-        # 예약 완료 메시지 표시
-        messages.success(request, "예약이 완료되었습니다.")
-
-        return redirect('booking:index')
+            reservation.save()  # Reservation 모델의 save 메서드 호출하여 예약 정보 저장
+            # 예약 완료 메시지 표시
+            messages.success(request, "예약이 완료되었습니다.")
+            return redirect('booking:index')
+            
     else:
         return HttpResponseNotAllowed(['POST'])
