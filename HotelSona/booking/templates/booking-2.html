@@ -556,5 +556,16 @@
       document.getElementById("room-guest").value =
         document.getElementById("guest").value;
     </script>
+    {% if messages %}
+    <div id="messages" style="display: none">
+      {% for message in messages %} {{ message|safe }} {% endfor %}
+    </div>
+    {% endif %}
+    <script>
+      var errorMessages = document.getElementById("messages");
+      if (errorMessages) {
+        alert(errorMessages.innerHTML);
+      }
+    </script>
   </body>
 </html>

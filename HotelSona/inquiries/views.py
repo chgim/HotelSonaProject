@@ -25,6 +25,7 @@ def customer_question(request):
         created_date = datetime.now().strftime("%Y-%m-%d")
         is_public = request.POST.get('is_public') == 'True'
         question = Question.objects.create(author=author, title=title, content=content, created_date=created_date, is_public=is_public)
+        messages.success(request, '질문이 등록되었습니다.')
         return redirect('inquiries:customer_voice')
     else:
         return render(request, 'customer-question.html')

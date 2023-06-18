@@ -218,19 +218,16 @@
                       <td class="r-o">Capacity:</td>
                       <td>Max person {{ room.capacity }}</td>
                     </tr>
-                    
                   </tbody>
                 </table>
-                
               </div>
-              
             </div>
           </div>
           {% endfor %}
         </div>
       </div>
     </section>
-   
+
     <!-- Rooms Section End -->
 
     <!-- Footer Section Begin -->
@@ -297,5 +294,16 @@
     <script src="../../static/js/jquery.slicknav.js"></script>
     <script src="../../static/js/owl.carousel.min.js"></script>
     <script src="../../static/js/main.js"></script>
+    {% if messages %}
+    <div id="messages" style="display: none">
+      {% for message in messages %} {{ message|safe }} {% endfor %}
+    </div>
+    {% endif %}
+    <script>
+      var errorMessages = document.getElementById("messages");
+      if (errorMessages) {
+        alert(errorMessages.innerHTML);
+      }
+    </script>
   </body>
 </html>

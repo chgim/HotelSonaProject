@@ -319,7 +319,6 @@
               <div class="guests">
                 <div>Guests</div>
                 <div>
-                  
                   <select id="guest" name="guest" style="height: 40px">
                     <option value="1">1 Adults</option>
                     <option value="2">2 Adults</option>
@@ -415,7 +414,6 @@
     <script src="../../static/js/main.js"></script>
 
     <script>
-
       /* 오늘 이전의 날짜 선택 x, 체크인 날짜보다 체크아웃 날짜가 빠도록 입력 하는 것을 방지. */
 
       // 오늘 이전의 날짜 선택 x
@@ -436,7 +434,6 @@
             this.value = ""; // 체크아웃 날짜를 비워 선택을 막음
           }
         });
-      
 
       /* 값을 입력하지 않은 경우 alert 호출, 원하는 페이지로 쿼리 매개변수를 사용하여 값을 넘겨줌*/
 
@@ -472,6 +469,17 @@
       document.getElementById("check-in").value = checkIn;
       document.getElementById("check-out").value = checkOut;
       document.getElementById("guest").value = guest;
+    </script>
+    {% if messages %}
+    <div id="messages" style="display: none">
+      {% for message in messages %} {{ message|safe }} {% endfor %}
+    </div>
+    {% endif %}
+    <script>
+      var errorMessages = document.getElementById("messages");
+      if (errorMessages) {
+        alert(errorMessages.innerHTML);
+      }
     </script>
   </body>
 </html>

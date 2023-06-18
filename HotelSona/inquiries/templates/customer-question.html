@@ -361,5 +361,16 @@
     <script src="../../static/js/jquery.slicknav.js"></script>
     <script src="../../static/js/owl.carousel.min.js"></script>
     <script src="../../static/js/main.js"></script>
+    {% if messages %}
+    <div id="messages" style="display: none">
+      {% for message in messages %} {{ message|safe }} {% endfor %}
+    </div>
+    {% endif %}
+    <script>
+      var errorMessages = document.getElementById("messages");
+      if (errorMessages) {
+        alert(errorMessages.innerHTML);
+      }
+    </script>
   </body>
 </html>
