@@ -19,7 +19,6 @@ from django.core.exceptions import ValidationError
     
 #     return render(request, 'register.html')
 
-# 수정
 def register_view(request):
     if request.method == "POST":
         if request.POST["password1"] == request.POST["password2"]:

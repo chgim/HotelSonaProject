@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="zxx">
   <head>
@@ -337,32 +338,35 @@
             color: #424242;
           "
         >
-          * 표시된 부분만 수정이 가능합니다.
-        </div>
+        * 표시된 부분만 수정이 가능합니다.
+        <div class="container">
+          <div class="form-container">
+            <form method="POST" action="{% url 'mypage:mypage_2' %}">
+              {% csrf_token %}
+        
+              <h3>아이디</h3>
+              <input type="text" name="username" class="text" value="{{ request.user.username }}" readonly />
+        
+              <h3>* 비밀번호</h3>
+              <input type="password" name="password" class="text" placeholder="비밀번호" value="" />
 
-        <h3>아이디</h3>
-        <input type="text" name="id" class="text" readonly />
-        <h3>* 비밀번호</h3>
-        <input
-          type="text"
-          name="password"
-          class="text"
-          placeholder="비밀번호"
-        />
-        <h3>* 성명</h3>
-        <input type="text" name="name" class="text" placeholder="성명" />
-        <h3>* 생년월일</h3>
-        <input type="text" name="birth" class="text" placeholder="YYYYMMDD" />
-        <h3>* E-mail</h3>
-        <input type="text" name="email" class="text" placeholder="이메일" />
-        <h3>* 전화번호</h3>
-        <input
-          type="text"
-          name="phone"
-          class="text"
-          placeholder="010-0000-0000"
-        />
-        <input type="submit" value="정보수정" class="submit-btn" />
+              <h3>* 성명</h3>
+              <input type="text" name="name" class="text" value="{{ form.name.value|default_if_none:user_profile.name|default:'' }}" placeholder="성명" />
+
+              <h3>* 생년월일</h3>
+              <input type="text" name="birthdate" class="text" value="{{ form.birthdate.value|default_if_none:user_profile.birthdate|date:'Ymd' }}" placeholder="YYYYMMDD" />
+
+              <h3>* E-mail</h3>
+              <input type="email" name="email" class="text" value="{{ form.email.value|default_if_none:user_profile.email|default:'' }}" placeholder="이메일" />
+
+              <h3>* 전화번호</h3>
+              <input type="text" name="phonenumber" class="text" value="{{ form.phonenumber.value|default_if_none:user_profile.phonenumber|default:'' }}" placeholder="010-0000-0000" />
+        
+              <button type="submit" class="submit-btn">정보수정</button>
+            </form>
+          </div>
+        </div>
+          
       </div>
     </div>
 
@@ -415,21 +419,7 @@
                 <li><a href="#">Environmental Policy</a></li>
               </ul>
             </div>
-            <div class="col-lg-5">
-              <div class="co-text">
-                <p>
-                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                  Copyright &copy;
-                  <script>
-                    document.write(new Date().getFullYear());
-                  </script>
-                  All rights reserved | This template is made with
-                  <i class="fa fa-heart" aria-hidden="true"></i> by
-                  <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                </p>
-              </div>
-            </div>
+          
           </div>
         </div>
       </div>

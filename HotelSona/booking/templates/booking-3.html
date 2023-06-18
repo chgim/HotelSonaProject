@@ -381,6 +381,10 @@
                 <th>객실:</th>
                 <td>{{ selected_room }}</td>
               </tr>
+              <tr>
+                <th>가격:</th>
+                <td>{{ total_price }}</td>
+              </tr>
             </table>
             <button
               class="return"
@@ -414,6 +418,7 @@
                 name="selected_room"
                 value="{{ selected_room }}"
               />
+              <input type="hidden" name="total_price" value="{{ total_price }}" />
               <!---->
               <input
                 type="text"

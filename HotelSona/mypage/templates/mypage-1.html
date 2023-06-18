@@ -86,7 +86,7 @@
       }
 
       .mypage {
-        width: 700px;
+        width: 60%;
         margin: 0 auto;
       }
 
@@ -137,16 +137,30 @@
       a:active {
         color: inherit;
       }
-
+      table{
+        width:100%
+      }
+      th{
+        background-color: #dfa974;
+        color: white;
+        border: none;
+        font-size: 18px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
       table,
       tr,
       th,
       td {
+        text-align: center;
         margin: 0 auto;
-        border: none;
         padding: 5px 15px 5px 15px;
-        color: white;
-        background-color: #dfa974;
+      }
+      td{
+        border-bottom: 1px solid lightgray;
+        font-size: 16px;
+        padding-top: 7px;
+        padding-bottom: 7px;
       }
     </style>
   </head>
@@ -292,18 +306,36 @@
           </ul>
         </div>
       </div>
+      {% if reservations %}
       <table>
-        <tr>
-          <th>No</th>
-          <th>인원</th>
-          <th>체크인</th>
-          <th>체크아웃</th>
-          <th>객실</th>
-          <th>금액 (원)</th>
-          <th>예약시간</th>
-          <th>선택</th>
-        </tr>
+          <thead>
+              <tr>
+                  <th>이메일</th>
+                  <th>인원</th>
+                  <th>체크인</th>
+                  <th>체크아웃</th>
+                  <th>객실</th>
+                  <th>금액</th>
+                  <th>예약시간</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for reservation in reservations %}
+                  <tr>
+                      <td>{{ reservation.user }}</td>
+                      <td>{{ reservation.guest_count }}</td>
+                      <td>{{ reservation.check_in|date:"Y-m-d" }}</td>
+                      <td>{{ reservation.check_out|date:"Y-m-d" }}</td>
+                      <td>{{ reservation.room }}</td>
+                      <td>{{ reservation.total_price }}</td>
+                      <td>{{ reservation.created_at|date:"Y-m-d" }}</td>
+                  </tr>
+              {% endfor %}
+          </tbody>
       </table>
+  {% else %}
+      <p>예약 내역이 없습니다.</p>
+  {% endif %}
     </div>
 
     <!-- Footer Section Begin -->
@@ -355,21 +387,7 @@
                 <li><a href="#">Environmental Policy</a></li>
               </ul>
             </div>
-            <div class="col-lg-5">
-              <div class="co-text">
-                <p>
-                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                  Copyright &copy;
-                  <script>
-                    document.write(new Date().getFullYear());
-                  </script>
-                  All rights reserved | This template is made with
-                  <i class="fa fa-heart" aria-hidden="true"></i> by
-                  <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                </p>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>

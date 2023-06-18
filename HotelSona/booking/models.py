@@ -15,10 +15,6 @@ class Room(models.Model):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs) 
 
-
-
-
-
 class Reservation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
@@ -29,6 +25,7 @@ class Reservation(models.Model):
     expiry_date = models.CharField(max_length=5)
     guest_name = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
+    total_price=models.IntegerField()
     
 
     def __str__(self):

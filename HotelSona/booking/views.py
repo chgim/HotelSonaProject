@@ -7,6 +7,7 @@ from django.utils import timezone
 from django.contrib import messages
 from django.http import HttpResponseNotAllowed
 from datetime import datetime
+from decimal import Decimal
 # Create your views here.
 
 
@@ -49,7 +50,18 @@ def booking_3(request):
     guest_count = request.GET.get("guest")
     selected_room = request.GET.get("selected_room")
 
-    return render(request, 'booking-3.html', {'check_in': check_in, 'check_out': check_out, 'guest_count': guest_count, 'selected_room': selected_room})
+    room = Room.objects.get(name=selected_room)
+    room_price = room.price
+    # int(체크아웃-체크인)*객실 1박 가격
+    # 숙박 기간 계산하기:  
+    check_in = datetime.strptime(check_in, "%Y-%m-%d").date()
+    check_out = datetime.strptime(check_out, "%Y-%m-%d").date()
+    duration = (check_out - check_in).days
+
+    # 예약 가격 계산하기
+    total_price = room_price * Decimal(duration)
+
+    return render(request, 'booking-3.html', {'check_in': check_in, 'check_out': check_out, 'guest_count': guest_count, 'selected_room': selected_room, 'total_price':total_price})
 
  # 실제 예약 시스템
 
@@ -61,6 +73,7 @@ def booking_3_complete(request):
         check_out = request.POST.get("check_out")
         guest_count = request.POST.get("guest_count")
         selected_room = request.POST.get("selected_room")
+        total_price = int(request.POST.get("total_price"))
         moveNumber1 = request.POST.get('moveNumber1', '')
         moveNumber2 = request.POST.get('moveNumber2', '')
         moveNumber3 = request.POST.get('moveNumber3', '')
@@ -71,8 +84,10 @@ def booking_3_complete(request):
         
         
         # 문자열을 datetime 객체로 변환
-        check_in = datetime.strptime(check_in, "%Y-%m-%d").date()
-        check_out = datetime.strptime(check_out, "%Y-%m-%d").date()
+        # check_in = datetime.strptime(check_in, "%Y-%m-%d").date()
+        # check_out = datetime.strptime(check_out, "%Y-%m-%d").date()
+        check_in = datetime.strptime(check_in, "%Y년 %m월 %d일").date().strftime("%Y-%m-%d")
+        check_out = datetime.strptime(check_out, "%Y년 %m월 %d일").date().strftime("%Y-%m-%d")
 
         room = Room.objects.get(name=selected_room)
         
@@ -87,7 +102,7 @@ def booking_3_complete(request):
             # reservation 모델에 저장
             reservation = Reservation.objects.create(user=request.user, room=room, check_in=check_in, check_out=check_out,
                                                  guest_count=guest_count, card_number=card_number,
-                                                 expiry_date=expiry_date, guest_name=guest_name,
+                                                 expiry_date=expiry_date, guest_name=guest_name,total_price=total_price,
                                                  )
             reservation.save()  # Reservation 모델의 save 메서드 호출하여 예약 정보 저장
             # 예약 완료 메시지 표시
