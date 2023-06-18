@@ -173,7 +173,6 @@
       .title {
         font-weight: 600;
         color: #424242;
-        
       }
       .ReservationComp,
       .return {
@@ -196,8 +195,8 @@
       .ReservationComp:active {
         background-color: #bf8d5b;
       }
-     
-      th{
+
+      th {
         width: 50%;
       }
     </style>
@@ -354,40 +353,44 @@
         </div>
       </div>
       <!--캘린더-->
-      <div class="infoBox">
-        <div class="reservationInfo">
-          <h4>예약 정보</h4>
-          <hr />
-          <table>
-            <tr>
-              <th>체크인: </th>
-              <td>{{ check_in }}</td>
-            </tr>
-            <tr>
-              <th>체크아웃: </th>
-              <td>{{ check_out }}</td>
-            </tr>
-            <tr>
-              <th>인원: </th>
-              <td>{{ guest_count }}</td>
-            </tr>
-            <tr>
-              <th>객실: </th>
-              <td>{{ selected_room }}</td>
-            </tr>
-          </table>
-          <button
-            class="return"
-            type="button"
-            onclick="location.href='{% url 'booking:booking' %}'"
-          >
-            일정 다시 선택
-          </button>
-        </div>
-        <div class="customerInfo" style="margin-top: 50px">
-          <form id="bookingForm" style="all: initial" action="#">
-          
-
+      <form
+        id="bookingForm"
+        style="all: initial"
+        action="{% url 'booking:booking_3_complete' %}"
+        method="POST"
+      >
+        {% csrf_token %}
+        <div class="infoBox">
+          <div class="reservationInfo">
+            <h4>예약 정보</h4>
+            <hr />
+            <table>
+              <tr>
+                <th>체크인:</th>
+                <td>{{ check_in }}</td>
+              </tr>
+              <tr>
+                <th>체크아웃:</th>
+                <td>{{ check_out }}</td>
+              </tr>
+              <tr>
+                <th>인원:</th>
+                <td>{{ guest_count }}</td>
+              </tr>
+              <tr>
+                <th>객실:</th>
+                <td>{{ selected_room }}</td>
+              </tr>
+            </table>
+            <button
+              class="return"
+              type="button"
+              onclick="location.href='{% url 'booking:booking' %}'"
+            >
+              일정 다시 선택
+            </button>
+          </div>
+          <div class="customerInfo" style="margin-top: 50px">
             <div class="paymentInfo" style="margin-top: 100px">
               <h4>결제 정보</h4>
               <hr />
@@ -398,9 +401,24 @@
                 유효기간
               </div>
               <br />
+              <!--체크인, 체크아웃, 인원, 선택한 방도 예약을 위해 input type="hidden"으로 같이 보내줌.-->
+              <input type="hidden" name="check_in" value="{{ check_in }}" />
+              <input type="hidden" name="check_out" value="{{ check_out }}" />
+              <input
+                type="hidden"
+                name="guest_count"
+                value="{{ guest_count }}"
+              />
+              <input
+                type="hidden"
+                name="selected_room"
+                value="{{ selected_room }}"
+              />
+              <!---->
               <input
                 type="text"
                 class="moveNumber"
+                name="moveNumber1"
                 onKeyup="inputMoveNumber(this);"
                 maxlength="4"
               />&nbsp;-&nbsp;
@@ -408,6 +426,7 @@
               <input
                 type="text"
                 class="moveNumber"
+                name="moveNumber2"
                 onKeyup="inputMoveNumber(this);"
                 maxlength="4"
               />&nbsp;-&nbsp;
@@ -415,12 +434,20 @@
               <input
                 type="text"
                 class="moveNumber"
+                name="moveNumber3"
                 onKeyup="inputMoveNumber(this);"
                 maxlength="4"
               />&nbsp;-&nbsp;
 
-              <input type="text" class="moveNumber" maxlength="4" />
+              <input
+                type="text"
+                class="moveNumber"
+                name="moveNumber4"
+                maxlength="4"
+              />
               <script type="text/javascript">
+                /* 카드번호 입력 필터링*/
+
                 function inputMoveNumber(num) {
                   if (isFinite(num.value) == false) {
                     alert("카드번호는 숫자만 입력할 수 있습니다.");
@@ -439,12 +466,15 @@
               <input
                 type="text"
                 class="validThru"
+                name="validThru"
                 onKeyup="inputValidThru(this);"
                 placeholder="MM/YY"
                 maxlength="5"
                 style="width: 110px; margin-left: 35px"
               />
               <script type="text/javascript">
+                /*유효기간 입력 필터링 */
+
                 function inputValidThru(period) {
                   // replace 함수를 사용하여 슬래시( / )을 공백으로 치환한다.
                   var replaceCard = period.value.replace(/\//g, "");
@@ -502,10 +532,10 @@
                 }
               </script>
             </div>
-            <button class="ReservationComp" type="button">예약 완료</button>
-          </form>
+            <button class="ReservationComp" type="submit">예약 완료</button>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
     <!--content end-->
 
@@ -573,43 +603,5 @@
     <script src="../../static/js/jquery.slicknav.js"></script>
     <script src="../../static/js/owl.carousel.min.js"></script>
     <script src="../../static/js/main.js"></script>
-
-    <script>
-       /* 폰 번호 입력 시 자동으로 하이픈(-) 생성 */
-      function autoHypenPhone(str) {
-        str = str.replace(/[^0-9]/g, "");
-        var tmp = "";
-        if (str.length < 4) {
-          return str;
-        } else if (str.length < 7) {
-          tmp += str.substr(0, 3);
-          tmp += "-";
-          tmp += str.substr(3);
-          return tmp;
-        } else if (str.length < 11) {
-          tmp += str.substr(0, 3);
-          tmp += "-";
-          tmp += str.substr(3, 3);
-          tmp += "-";
-          tmp += str.substr(6);
-          return tmp;
-        } else {
-          tmp += str.substr(0, 3);
-          tmp += "-";
-          tmp += str.substr(3, 4);
-          tmp += "-";
-          tmp += str.substr(7);
-          return tmp;
-        }
-        return str;
-      }
-
-      var cellPhone = document.getElementById("cellPhone");
-      cellPhone.onkeyup = function (event) {
-        event = event || window.event;
-        var _val = this.value.trim();
-        this.value = autoHypenPhone(_val);
-      };
-    </script>
   </body>
 </html>

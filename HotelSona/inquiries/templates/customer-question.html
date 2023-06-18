@@ -76,13 +76,12 @@
         width: 100%;
         margin-left: 20px;
       }
-      select{
+      select {
         margin-left: 4px;
-        width:10%;
+        width: 10%;
         text-align: center;
-        
       }
-      option{
+      option {
         text-align: center;
         border-radius: 0px;
       }
@@ -109,13 +108,11 @@
         margin-top: 10px;
         font-size: 18px;
         font-weight: bold;
-       
       }
     </style>
   </head>
 
   <body>
-  
     <!-- Page Preloder -->
     <div id="preloder">
       <div class="loader"></div>
@@ -246,14 +243,16 @@
         style="width: 60%; margin-left: 20%"
       >
         {% csrf_token %}
+        <!--보안-->
         <hr />
         <label for="author" style="width: 7%">작성자</label>
-          <input
+        <input
           type="email"
           id="author"
           name="author"
           required
-          style="width: 50%;"
+          readonly
+          style="width: 50%"
           value="{{ request.user.username }}"
         /><br />
         <hr />
@@ -279,8 +278,8 @@
         <hr />
         <label for="is_public">공개 여부</label>
         <select id="is_public" name="is_public">
-          <option value="True" style="border-radius: 0px;">공개</option>
-          <option value="False" style="border-radius: 0px;">비공개</option>
+          <option value="True" style="border-radius: 0px">공개</option>
+          <option value="False" style="border-radius: 0px">비공개</option>
         </select>
         <br />
         <hr />
