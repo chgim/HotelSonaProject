@@ -148,7 +148,7 @@
       }
 
       .member {
-        width: 700px;
+        width: 100%;
         padding-top: 20px;
         padding-bottom: 20px;
         border: solid;
@@ -198,7 +198,6 @@
       <div class="loader"></div>
     </div>
 
-    
     <!-- Header Section Begin -->
     <header class="header-section header-normal">
       <div class="top-nav">
@@ -338,16 +337,93 @@
             color: #424242;
           "
         >
-        * 표시된 부분만 수정이 가능합니다.
-        <div class="container">
-          <div class="form-container">
-            <form method="POST" action="{% url 'mypage:mypage_2' %}">
-              {% csrf_token %}
-        
-              <h3>아이디</h3>
-              <input type="text" name="username" class="text" value="{{ request.user.username }}" readonly />
-        
-              <h3>* 비밀번호</h3>
+          * 표시된 부분만 수정이 가능합니다.
+          <div class="container">
+            <div class="form-container">
+              <form method="POST" action="{% url 'mypage:mypage_2' %}">
+                {% csrf_token %}
+
+                <h3>아이디</h3>
+                <input
+                  type="text"
+                  name="username"
+                  class="text"
+                  value="{{ request.user.username }}"
+                  readonly
+                />
+                <h3>* 비밀번호 (8자 이상)</h3>
+                <input
+                  type="password"
+                  name="password"
+                  class="text"
+                  placeholder="비밀번호"
+                  value="{{ form.initial.password }}"
+                />
+
+                <h3>* 성명</h3>
+                <input
+                  type="text"
+                  name="name"
+                  class="text"
+                  value="{{ form.initial.name }}"
+                  placeholder="성명"
+                />
+
+                <h3>* 생년월일 8자리</h3>
+                <input
+                  type="text"
+                  name="birthdate"
+                  class="text"
+                  value="{{ form.initial.birthdate }}"
+                  placeholder="YYYYMMDD"
+                />
+
+                <h3>* 전화번호</h3>
+                <input
+                  type="text"
+                  name="phonenumber"
+                  id="phonenumber"
+                  class="text"
+                  value="{{ form.initial.phonenumber }}"
+                  placeholder="010-0000-0000"
+                />
+                <script>
+                  function autoHypenPhone(str) {
+                    str = str.replace(/[^0-9]/g, "");
+                    var tmp = "";
+                    if (str.length < 4) {
+                      return str;
+                    } else if (str.length < 7) {
+                      tmp += str.substr(0, 3);
+                      tmp += "-";
+                      tmp += str.substr(3);
+                      return tmp;
+                    } else if (str.length < 11) {
+                      tmp += str.substr(0, 3);
+                      tmp += "-";
+                      tmp += str.substr(3, 3);
+                      tmp += "-";
+                      tmp += str.substr(6);
+                      return tmp;
+                    } else {
+                      tmp += str.substr(0, 3);
+                      tmp += "-";
+                      tmp += str.substr(3, 4);
+                      tmp += "-";
+                      tmp += str.substr(7);
+                      return tmp;
+                    }
+                    return str;
+                  }
+
+                  var phonenumber = document.getElementById("phonenumber");
+                  phonenumber.onkeyup = function (event) {
+                    event = event || window.event;
+                    var _val = this.value.trim();
+                    this.value = autoHypenPhone(_val);
+                  };
+                </script>
+                <!-- <h3>* 비밀번호</h3>
               <input type="password" name="password" class="text" placeholder="비밀번호" value="" />
 
               <h3>* 성명</h3>
@@ -361,15 +437,14 @@
 
               <h3>* 전화번호</h3>
               <input type="text" name="phonenumber" class="text" value="{{ form.phonenumber.value|default_if_none:user_profile.phonenumber|default:'' }}" placeholder="010-0000-0000" />
-        
-              <button type="submit" class="submit-btn">정보수정</button>
-            </form>
+         -->
+                <button type="submit" class="submit-btn">정보수정</button>
+              </form>
+            </div>
           </div>
         </div>
-          
       </div>
     </div>
-
     <!-- Footer Section Begin -->
     <footer class="footer-section">
       <div class="container">
@@ -419,7 +494,6 @@
                 <li><a href="#">Environmental Policy</a></li>
               </ul>
             </div>
-          
           </div>
         </div>
       </div>

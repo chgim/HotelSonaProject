@@ -137,10 +137,10 @@
       a:active {
         color: inherit;
       }
-      table{
-        width:100%
+      table {
+        width: 100%;
       }
-      th{
+      th {
         background-color: #dfa974;
         color: white;
         border: none;
@@ -156,11 +156,18 @@
         margin: 0 auto;
         padding: 5px 15px 5px 15px;
       }
-      td{
+      td {
         border-bottom: 1px solid lightgray;
         font-size: 16px;
         padding-top: 7px;
         padding-bottom: 7px;
+      }
+      .delete_btn {
+        background-color: #8b0000;
+        color: white;
+        border-radius: 3px;
+        border: none;
+        font-weight: bold;
       }
     </style>
   </head>
@@ -170,8 +177,6 @@
     <div id="preloder">
       <div class="loader"></div>
     </div>
-
-    
 
     <!-- Header Section Begin -->
     <header class="header-section header-normal">
@@ -308,34 +313,44 @@
       </div>
       {% if reservations %}
       <table>
-          <thead>
-              <tr>
-                  <th>이메일</th>
-                  <th>인원</th>
-                  <th>체크인</th>
-                  <th>체크아웃</th>
-                  <th>객실</th>
-                  <th>금액</th>
-                  <th>예약시간</th>
-              </tr>
-          </thead>
-          <tbody>
-              {% for reservation in reservations %}
-                  <tr>
-                      <td>{{ reservation.user }}</td>
-                      <td>{{ reservation.guest_count }}</td>
-                      <td>{{ reservation.check_in|date:"Y-m-d" }}</td>
-                      <td>{{ reservation.check_out|date:"Y-m-d" }}</td>
-                      <td>{{ reservation.room }}</td>
-                      <td>{{ reservation.total_price }}</td>
-                      <td>{{ reservation.created_at|date:"Y-m-d" }}</td>
-                  </tr>
-              {% endfor %}
-          </tbody>
+        <thead>
+          <tr>
+            <th>이메일</th>
+            <th>인원</th>
+            <th>체크인</th>
+            <th>체크아웃</th>
+            <th>객실</th>
+            <th>금액</th>
+            <th>예약시간</th>
+            <th>예약 취소</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for reservation in reservations %}
+          <tr>
+            <td>{{ reservation.user }}</td>
+            <td>{{ reservation.guest_count }}</td>
+            <td>{{ reservation.check_in|date:"Y-m-d" }}</td>
+            <td>{{ reservation.check_out|date:"Y-m-d" }}</td>
+            <td>{{ reservation.room }}</td>
+            <td>{{ reservation.total_price }}</td>
+            <td>{{ reservation.created_at|date:"Y-m-d" }}</td>
+            <td>
+              <form
+                action="{% url 'booking:reservation_delete' reservation.pk %}"
+                method="post"
+              >
+                {% csrf_token %}
+                <button type="submit" class="delete_btn">예약 취소</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
       </table>
-  {% else %}
-      <p>예약 내역이 없습니다.</p>
-  {% endif %}
+      {% else %}
+      <p style="text-align: center; margin-top: px">예약 내역이 없습니다.</p>
+      {% endif %}
     </div>
 
     <!-- Footer Section Begin -->
@@ -387,7 +402,6 @@
                 <li><a href="#">Environmental Policy</a></li>
               </ul>
             </div>
-            
           </div>
         </div>
       </div>

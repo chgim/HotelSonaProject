@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib import messages
-
+from accounts.models import UserProfile
 from django.core.exceptions import ValidationError
 
 # Create your views here.
@@ -32,7 +32,11 @@ def register_view(request):
             except User.DoesNotExist:
                 # 중복된 이메일이 없는 경우, 회원가입 진행
                 user = User.objects.create_user(username=email, password=request.POST["password1"])
-                
+                 # 프로필 정보 저장
+                name = request.POST["name"]
+                birthdate = request.POST["birth"]
+                phonenumber = request.POST["cellPhone"]
+                UserProfile.objects.create(user=user, name=name, birthdate=birthdate, phonenumber=phonenumber)
                 messages.info(request, '회원가입 완료')
                 return redirect('booking:index')
         else:

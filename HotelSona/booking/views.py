@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.http import HttpResponseNotAllowed
 from datetime import datetime
 from decimal import Decimal
+from django.shortcuts import get_object_or_404
 # Create your views here.
 
 
@@ -111,3 +112,15 @@ def booking_3_complete(request):
             
     else:
         return HttpResponseNotAllowed(['POST'])
+    
+@login_required # 예약 취소 reservation 모델의 pk를 받아와서 진행
+def reservation_delete(request, pk):
+    reservation = get_object_or_404(Reservation, pk=pk)
+
+    if request.method == 'POST':
+        reservation.delete()
+        messages.success(request, '예약이 삭제되었습니다.')
+    else:
+        messages.error(request, '잘못된 요청입니다.')
+
+    return redirect('mypage:mypage_1')
