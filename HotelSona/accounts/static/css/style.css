@@ -163,7 +163,7 @@ ol {
   content: "";
 }
 /* Preloder */
-/* 
+
 #preloder {
   position: fixed;
   width: 100%;
@@ -280,7 +280,7 @@ ol {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-} */
+}
 /*---------------------
   Header
 -----------------------*/
