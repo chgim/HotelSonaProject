@@ -138,8 +138,6 @@
   </head>
 
   <body>
-    
-  
     <!-- Page Preloder -->
     <div id="preloder">
       <div class="loader"></div>
@@ -277,6 +275,11 @@
           >이메일로 가입하기</a
         >
       </div>
+      {% load socialaccount %}
+
+      <a href="{% provider_login_url 'kakao' method='oauth2' %}">
+        카카오톡 회원가입
+      </a>
 
       {% if error %}
       <script>
