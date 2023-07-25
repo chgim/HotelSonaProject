@@ -326,9 +326,21 @@
           </tr>
         </thead>
         <tbody>
+          
           {% for reservation in reservations %}
           <tr>
             <td>{{ reservation.user }}</td>
+            <!-- <td>
+              {% if reservation.user == request.user %}
+                {% if is_kakao_user %}
+                  {{ kakao_email }}
+                {% else %}
+                  {{ reservation.user.email }}
+                {% endif %}
+              {% else %}
+                {{ reservation.user.email }}
+              {% endif %}
+            </td> -->
             <td>{{ reservation.guest_count }}</td>
             <td>{{ reservation.check_in|date:"Y-m-d" }}</td>
             <td>{{ reservation.check_out|date:"Y-m-d" }}</td>

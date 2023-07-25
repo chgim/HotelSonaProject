@@ -126,13 +126,24 @@
       }
 
       .join {
-        margin-top: 100px;
+        margin-top: 30px;
         text-align: center;
       }
 
       .join a {
         color: red;
         text-decoration-line: none;
+      }
+      .kakao{
+        width:40%;
+        margin-left: 30%;
+        
+      }
+      .kakao img{
+        margin-top: 30px;
+        text-align: center;
+       
+        
       }
     </style>
   </head>
@@ -265,22 +276,17 @@
         <input type="submit" value="로그인" class="submit-btn" />
       </form>
 
-      <div class="password">
-        <input type="checkbox" value="1" /> 로그인 유지
-        <a href="#">비밀번호 찾기</a>
-      </div>
-
       <div class="join">
         아직 회원이 아니신가요? 　<a href="{% url 'accounts:register_view' %}"
           >이메일로 가입하기</a
         >
       </div>
       {% load socialaccount %}
-
+      <div class="kakao">
       <a href="{% provider_login_url 'kakao' method='oauth2' %}">
-        카카오톡 회원가입
+        <img src="../../static/img/certi_kakao_login.png"/>
       </a>
-
+    </div>
       {% if error %}
       <script>
         alert("{{ error }}");
