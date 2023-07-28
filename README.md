@@ -24,6 +24,6 @@
 4. 객실 정보 CRUD
 
 ## 프로젝트 ppt
-
+https://github.com/chgim/HotelSonaProject/blob/main/%EC%9B%B9%EC%84%9C%EB%B9%84%EC%8A%A4%EC%BB%B4%ED%93%A8%ED%8C%85.pptx
 
 
