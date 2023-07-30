@@ -322,7 +322,7 @@
             <th>객실</th>
             <th>금액</th>
             <th>예약시간</th>
-            <th>예약 취소</th>
+            <th>예약</th>
           </tr>
         </thead>
         <tbody>
@@ -348,13 +348,21 @@
             <td>{{ reservation.total_price }}</td>
             <td>{{ reservation.created_at|date:"Y-m-d" }}</td>
             <td>
-              <form
+              <!-- <form
                 action="{% url 'booking:reservation_delete' reservation.pk %}"
                 method="post"
               >
                 {% csrf_token %}
                 <button type="submit" class="delete_btn">예약 취소</button>
-              </form>
+              </form> -->
+              {% if reservation.check_out < current_date %} 
+              이용완료
+              {% else %}
+                <form action="{% url 'booking:reservation_delete' reservation.pk %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="delete_btn">예약 취소</button>
+                </form>
+              {% endif %}
             </td>
           </tr>
           {% endfor %}

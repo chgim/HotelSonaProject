@@ -10,15 +10,13 @@ from accounts.models import UserProfile
 from allauth.socialaccount.models import SocialAccount
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 
-# @login_required
-# def mypage_1(request):
-#     reservations = Reservation.objects.filter(user=request.user)
-#     return render(request, 'mypage-1.html', {'reservations': reservations})
 @login_required
 def mypage_1(request):
-    reservations = Reservation.objects.filter(user=request.user)
-    
+    reservations = Reservation.objects.filter(user=request.user).order_by('-created_at')
+    # 현재 날짜 정보를 계산하여 템플릿으로 전달
+    current_date = timezone.now().date()
     # # 카카오 로그인 여부 확인을 위해 변수 추가
     # is_kakao_user = False
     # kakao_account = request.user.socialaccount_set.filter(provider='kakao').first()
@@ -27,7 +25,7 @@ def mypage_1(request):
     #     kakao_email = kakao_account.extra_data.get('email')
     
     # return render(request, 'mypage-1.html', {'reservations': reservations, 'is_kakao_user': is_kakao_user, 'kakao_email': kakao_email})
-    return render(request, 'mypage-1.html', {'reservations': reservations})
+    return render(request, 'mypage-1.html', {'reservations': reservations,'current_date': current_date})
 
 class UserProfileView(LoginRequiredMixin, View):
     def get(self, request):
