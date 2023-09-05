@@ -31,4 +31,4 @@ https://github.com/chgim/HotelSonaProject/blob/main/%EC%9B%B9%EC%84%9C%EB%B9%84%
 - 카카오 로그인 시 마이 페이지에서 예약 정보를 확인할 때 이메일 란에 이름이 들어감
 - 카카오페이 결제 시스템 기능 추가 원함
 - 각 객실마다 이용가능한 방의 수를 지정하길 원함  
-
+- 최적화 필요
