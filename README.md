@@ -4,7 +4,7 @@
 - 프로젝트 주제: 가상의 호텔 예약 웹 프로젝트
 - 프로젝트 이름: Hotel Sona
 - 개발 인원: 1명
-- 개발 기간: 2023.05.06 ~ 2023.07.23 (다른 프로젝트와 병행) 
+- 개발 기간: 2023.05.06 ~ 2023.06.20  
 - 개발 언어: Python
 - Front-End: Html, Css, Javascript, Bootstrap(Template)
 - Back-End: Django
