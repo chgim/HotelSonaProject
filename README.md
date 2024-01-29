@@ -8,7 +8,7 @@
 - 개발 언어: Python
 - Front-End: Html, Css, Javascript, Bootstrap(Template)
 - Back-End: Django
-- DB: sqlite3
+- DB: SQLite3
 - Api: 카카오 로그인 Api
 
 ## 프로젝트 기능
