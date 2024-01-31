@@ -5,11 +5,12 @@
 - 프로젝트 이름: Hotel Sona
 - 개발 인원: 1명
 - 개발 기간: 2023.05.06 ~ 2023.06.20  
-- 개발 언어: Python
-- Front-End: Html, Css, Javascript, Bootstrap(Template)
-- Back-End: Django
-- DB: SQLite3
-- Api: 카카오 로그인 Api
+- Programing Languages: Python, Html5, Css3, Javascript, Bootstrap
+- Framework/ Library: Django
+- Server: SQLite3
+- Tooling/ DevOps: GitHub, Visual Studio Code 
+- Api: 카카오 로그인 
+
 
 ## 프로젝트 기능
 ### 사용자
@@ -28,9 +29,3 @@
 ## 프로젝트 ppt
 https://github.com/chgim/HotelSonaProject/blob/main/%EC%9B%B9%EC%84%9C%EB%B9%84%EC%8A%A4%EC%BB%B4%ED%93%A8%ED%8C%85.pptx
 
-## 보완점
-- 카카오 로그인은 가능하지만 로컬 로그인과 세션을 동기화 하지 않아 카카오 계정과 함께 로그아웃 기능을 구현 못함
-- 카카오 로그인 시 마이 페이지에서 예약 정보를 확인할 때 이메일 란에 이름이 들어감
-- 카카오페이 결제 시스템 기능 추가 원함
-- 각 객실마다 이용가능한 방의 수를 지정하길 원함  
-- 최적화 필요
