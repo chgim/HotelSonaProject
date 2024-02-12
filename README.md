@@ -9,7 +9,7 @@
 - Framework/ Library: Django
 - Server: SQLite3
 - Tooling/ DevOps: GitHub, Visual Studio Code 
-- Api: 카카오 로그인 
+- API: 카카오 로그인 
 
 
 ## 프로젝트 기능
